@@ -31,13 +31,13 @@ namespace BUEMS.Models
         public string MainSalaryGrade { get; set; }
         [Display(Name = "লিঙ্গ")]
         public string Sex { get; set; }
-        [Display(Name = "মুক্তিযোদ্ধা ?")]
+        [Display(Name = "মুক্তিযোদ্ধা")]
         public Boolean IsFreedomFighter { get; set; }
-        [Display(Name = "অতিরিক্ত দায়িত্ব ?")]
+        [Display(Name = "অতিরিক্ত দায়িত্ব")]
         public Boolean IsAddiitonalDuties { get; set; }
-        [Display(Name = "ছাত্র উপদেষ্টা ?")]
+        [Display(Name = "ছাত্র উপদেষ্টা")]
         public Boolean IsStudentAdviser { get; set; }
-        [Display(Name = "ডিন ?")]
+        [Display(Name = "ডিন")]
         public Boolean IsDean { get; set; }
         [Display(Name = "চেয়ারম্যান")]
         public Boolean IsChairman { get; set; }

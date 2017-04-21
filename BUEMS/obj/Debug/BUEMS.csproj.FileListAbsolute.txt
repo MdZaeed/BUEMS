@@ -64,5 +64,9 @@ F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Datetimefixed.reso
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldshalfdone.resources
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldsfulldone.resources
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.GradesTableAdded.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csprojResolveAssemblyReference.cache
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Gradedropdowncreated.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.TitleDatabaseAdded.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.TitleDatabaseChanged.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.DepartmentDatabaseCreated.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.DepartmentDatabaseVulsudhrano.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csprojResolveAssemblyReference.cache

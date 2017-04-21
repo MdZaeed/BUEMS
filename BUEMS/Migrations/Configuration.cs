@@ -100,6 +100,15 @@ using System.Linq;
                                     Salary = 10000,
                                     Sex = "Male"
                                 });
+                        context.Titles.AddOrUpdate(i => i.SerialNo,
+                            new Title { SerialNo = 1, TitleName = "অধ্যাপক", Category = "শিক্ষক" },
+                            new Title { SerialNo = 2, TitleName = "সহকারী অধ্যাপক", Category = "শিক্ষক" },
+                            new Title { SerialNo = 3, TitleName = "ড্রাইভার", Category = "কর্মচারি" });
+
+                        context.Departments.AddOrUpdate(i => i.SerialNo,
+                            new Department { SerialNo = 1, DepartmentName = "ইংরেজি" },
+                            new Department { SerialNo = 2, DepartmentName = "গণিত" },
+                            new Department { SerialNo = 3, DepartmentName = "কম্পিউটার সায়েন্স" });
         }
     }
 }
