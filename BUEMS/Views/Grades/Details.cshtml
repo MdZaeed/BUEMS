@@ -1,0 +1,26 @@
+﻿@model BUEMS.Models.Grade
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Grade</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GradeRange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GradeRange)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GradeNo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

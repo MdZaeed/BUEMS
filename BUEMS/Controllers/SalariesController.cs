@@ -17,7 +17,14 @@ namespace BUEMS.Controllers
         // GET: Salaries
         public ActionResult Index()
         {
-            return View(db.Salaries.ToList());
+            List<Salary> salaries = new List<Salary>();
+            var employees = db.Employees.ToList();
+            foreach (Employee employee in employees)
+            {
+                Salary salary = MapEmployeeToSalary(employee);
+                salaries.Add(salary);
+            }
+            return View(salaries);
         }
 
 
@@ -27,32 +34,7 @@ namespace BUEMS.Controllers
             var employees = db.Employees.ToList();
             foreach (Employee employee in employees)
             {
-                Salary salary = new Salary
-                {
-                    SerialNo = employee.SerialNo,
-                    AdditionalDutiesAllowance = getAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + getStudentAdvisorAllowance(employee.IsStudentAdviser),
-                    AssistantProctorAllowance = getProctorAssistanceBill(employee.IsAssistantProctor),
-                    BF = getBF(employee.Salary, employee.Category),
-                    CurriculumAssitanceAllowance = getCurriculumAssistanceBill(),
-//                    DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
-                    GPF = getGPF(employee.Salary),
-                    HouseRent = CalculateHouseRent(employee.Salary),
-                    IncomeTax = getTax(1, 1, employee.Sex, employee.IsFreedomFighter),
-                    JoiningDate = employee.JoiningDate,
-                    MainSalary = employee.Salary,
-                    MedicalAllowance = getMedicalBill(),
-                    Name = employee.FullName,
-                    PayableMainSalary = employee.Salary,
-                    ResearchAllowance = getResearchAllowance(),
-                    RevenueStamp = getRevenueStampCost(),
-                    Somonnoy = 0,
-                    TelephoneAllowance = getTelephoneAllowance(),
-                    Title = employee.Podobi,
-                    TransportationAllowance = getTransportationAllowance(employee.HasOwnTransportationMethod)
-                };
-                salary.Total = getGrandTotal(salary);
-                salary.TotalSubtraction = getTotalSubtraction(salary);
-                salary.NeatSalary = getNeatTotalSalary(salary);
+                Salary salary = MapEmployeeToSalary(employee);
                 salaries.Add(salary);
             }
             return View(salaries);
@@ -64,32 +46,7 @@ namespace BUEMS.Controllers
             var employees = db.Employees.ToList();
             foreach (Employee employee in employees)
             {
-                Salary salary = new Salary
-                {
-                    SerialNo = employee.SerialNo,
-                    AdditionalDutiesAllowance = getAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + getStudentAdvisorAllowance(employee.IsStudentAdviser),
-                    AssistantProctorAllowance = getProctorAssistanceBill(employee.IsAssistantProctor),
-                    BF = getBF(employee.Salary, employee.Category),
-                    CurriculumAssitanceAllowance = getCurriculumAssistanceBill(),
-//                    DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
-                    GPF = getGPF(employee.Salary),
-                    HouseRent = CalculateHouseRent(employee.Salary),
-                    IncomeTax = getTax(1, 1, employee.Sex, employee.IsFreedomFighter),
-                    JoiningDate = employee.JoiningDate,
-                    MainSalary = employee.Salary,
-                    MedicalAllowance = getMedicalBill(),
-                    Name = employee.FullName,
-                    PayableMainSalary = employee.Salary,
-                    ResearchAllowance = getResearchAllowance(),
-                    RevenueStamp = getRevenueStampCost(),
-                    Somonnoy = 0,
-                    TelephoneAllowance = getTelephoneAllowance(),
-                    Title = employee.Podobi,
-                    TransportationAllowance = getTransportationAllowance(employee.HasOwnTransportationMethod)
-                };
-                salary.Total = getGrandTotal(salary);
-                salary.TotalSubtraction = getTotalSubtraction(salary);
-                salary.NeatSalary = getNeatTotalSalary(salary);
+                Salary salary = MapEmployeeToSalary(employee);
                 salaries.Add(salary);
             }
             return Json(salaries, JsonRequestBehavior.AllowGet);
@@ -98,35 +55,7 @@ namespace BUEMS.Controllers
         public ActionResult IndividualSheetData(int id)
         {
             var employee = db.Employees.Find(id);
-            Salary salary = new Salary
-            {
-                SerialNo = employee.SerialNo,
-                AdditionalDutiesAllowance = getAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + getStudentAdvisorAllowance(employee.IsStudentAdviser),
-                AssistantProctorAllowance = getProctorAssistanceBill(employee.IsAssistantProctor),
-                AccountNo = employee.AccountNo,
-                BF = getBF(employee.Salary, employee.Category),
-                CurriculumAssitanceAllowance = getCurriculumAssistanceBill(),
-//                DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
-                GPF = getGPF(employee.Salary),
-                HouseRent = CalculateHouseRent(employee.Salary),
-                IncomeTax = getTax(1, 1, employee.Sex, employee.IsFreedomFighter),
-                Institute = employee.Department,
-                JoiningDate = employee.JoiningDate,
-                MainSalary = employee.Salary,
-                MedicalAllowance = getMedicalBill(),
-                Month = "ফেব্রুয়ারি/২০১৭",
-                Name = employee.FullName,
-                PayableMainSalary = employee.Salary,
-                ResearchAllowance = getResearchAllowance(),
-                RevenueStamp = getRevenueStampCost(),
-                Somonnoy = 0,
-                TelephoneAllowance = getTelephoneAllowance(),
-                Title = employee.Podobi,
-                TransportationAllowance = getTransportationAllowance(employee.HasOwnTransportationMethod)
-            };
-            salary.Total = getGrandTotal(salary);
-            salary.TotalSubtraction = getTotalSubtraction(salary);
-            salary.NeatSalary = getNeatTotalSalary(salary);
+            Salary salary = MapEmployeeToSalary(employee);
             return Json(salary, JsonRequestBehavior.AllowGet);
         }
         // GET: Salaries/Details/5
@@ -441,6 +370,41 @@ namespace BUEMS.Controllers
         {
             int neat = salary.Total - salary.TotalSubtraction;
             return neat;
+        }
+
+        public Salary MapEmployeeToSalary(Employee employee)
+        {
+            Salary salary = new Salary
+            {
+                SerialNo = employee.SerialNo,
+                AdditionalDutiesAllowance = getAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + getStudentAdvisorAllowance(employee.IsStudentAdviser),
+                AssistantProctorAllowance = getProctorAssistanceBill(employee.IsAssistantProctor),
+                AccountNo = employee.AccountNo,
+                BF = getBF(employee.Salary, employee.Category),
+                CurriculumAssitanceAllowance = getCurriculumAssistanceBill(),
+                //                DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
+                GPF = getGPF(employee.Salary),
+                HouseRent = CalculateHouseRent(employee.Salary),
+                IncomeTax = getTax(1, 1, employee.Sex, employee.IsFreedomFighter),
+                Institute = employee.Department,
+                JoiningDate = employee.JoiningDate,
+                MainSalary = employee.Salary,
+                MedicalAllowance = getMedicalBill(),
+                Month = "ফেব্রুয়ারি/২০১৭",
+                Name = employee.FullName,
+                PayableMainSalary = employee.Salary,
+                ResearchAllowance = getResearchAllowance(),
+                RevenueStamp = getRevenueStampCost(),
+                Somonnoy = 0,
+                TelephoneAllowance = getTelephoneAllowance(),
+                Title = employee.Podobi,
+                TransportationAllowance = getTransportationAllowance(employee.HasOwnTransportationMethod)
+            };
+            salary.Total = getGrandTotal(salary);
+            salary.TotalSubtraction = getTotalSubtraction(salary);
+            salary.NeatSalary = getNeatTotalSalary(salary);
+
+            return salary;
         }
     }
 }

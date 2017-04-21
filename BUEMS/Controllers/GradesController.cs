@@ -10,109 +10,107 @@ using BUEMS.Models;
 
 namespace BUEMS.Controllers
 {
-    public class EmployeesController : Controller
+    public class GradesController : Controller
     {
         private BUEMSDbContext db = new BUEMSDbContext();
 
-        // GET: Employees
+        // GET: Grades
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            return View(db.Grades.ToList());
         }
 
-        // GET: Employees/Details/5
+        // GET: Grades/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Grade grade = db.Grades.Find(id);
+            if (grade == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(grade);
         }
 
-        // GET: Employees/Create
+        // GET: Grades/Create
         public ActionResult Create()
         {
-            var grades = db.Grades.ToList();
-            ViewBag.Grades = grades;
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: Grades/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalary,Grade,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Create([Bind(Include = "GradeNo,GradeRange")] Grade grade)
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
+                db.Grades.Add(grade);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(employee);
+            return View(grade);
         }
 
-        // GET: Employees/Edit/5
+        // GET: Grades/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Grade grade = db.Grades.Find(id);
+            if (grade == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(grade);
         }
 
-        // POST: Employees/Edit/5
+        // POST: Grades/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalary,Grade,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Edit([Bind(Include = "GradeNo,GradeRange")] Grade grade)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                db.Entry(grade).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(employee);
+            return View(grade);
         }
 
-        // GET: Employees/Delete/5
+        // GET: Grades/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Grade grade = db.Grades.Find(id);
+            if (grade == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(grade);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Grades/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
+            Grade grade = db.Grades.Find(id);
+            db.Grades.Remove(grade);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

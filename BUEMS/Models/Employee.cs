@@ -27,10 +27,8 @@ namespace BUEMS.Models
         public string JoiningDate { get; set; }
         [Display(Name = "অ্যাকাউন্ট নাম্বার")]
         public string AccountNo { get; set; }
-        [Display(Name = "মূল বেতন")]
-        public string MainSalary { get; set; }
-        [Display(Name = "গ্রেড")]
-        public string Grade { get; set; }
+        [Display(Name = "বেতন স্কেল/ গ্রেড")]
+        public string MainSalaryGrade { get; set; }
         [Display(Name = "লিঙ্গ")]
         public string Sex { get; set; }
         [Display(Name = "মুক্তিযোদ্ধা ?")]

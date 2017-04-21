@@ -11,5 +11,6 @@ namespace BUEMS.Models
         public DbSet<Tax> Taxes { get; set; }
         public DbSet<Salary> Salaries { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Grade> Grades { get; set; }
     }
 }

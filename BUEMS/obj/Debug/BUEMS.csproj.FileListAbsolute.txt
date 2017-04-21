@@ -63,4 +63,6 @@ F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csproj.GenerateResource.Cache
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Datetimefixed.resources
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldshalfdone.resources
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldsfulldone.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.GradesTableAdded.resources
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csprojResolveAssemblyReference.cache
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Gradedropdowncreated.resources
