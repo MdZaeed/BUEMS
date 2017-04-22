@@ -1,3 +1,8 @@
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Initial.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Datetimefixed.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldshalfdone.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldsfulldone.resources
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csproj.GenerateResource.Cache
 F:\VisualStdioProjects\BUEMS\BUEMS\bin\BUEMS.dll.config
 F:\VisualStdioProjects\BUEMS\BUEMS\bin\BUEMS.dll
 F:\VisualStdioProjects\BUEMS\BUEMS\bin\BUEMS.pdb
@@ -58,15 +63,4 @@ F:\VisualStdioProjects\BUEMS\BUEMS\bin\Microsoft.Owin.Security.Twitter.xml
 F:\VisualStdioProjects\BUEMS\BUEMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.dll
 F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.pdb
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Initial.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csproj.GenerateResource.Cache
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Datetimefixed.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldshalfdone.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Newfieldsfulldone.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.GradesTableAdded.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.Gradedropdowncreated.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.TitleDatabaseAdded.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.TitleDatabaseChanged.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.DepartmentDatabaseCreated.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.DepartmentDatabaseVulsudhrano.resources
-F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.csprojResolveAssemblyReference.cache
+F:\VisualStdioProjects\BUEMS\BUEMS\obj\Debug\BUEMS.Migrations.AllowanceDatabaseCreated.resources

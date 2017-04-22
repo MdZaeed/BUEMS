@@ -14,5 +14,6 @@ namespace BUEMS.Models
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Allowance> Allowances { get; set; }
     }
 }
