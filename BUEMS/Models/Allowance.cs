@@ -14,6 +14,6 @@ namespace BUEMS.Models
         [Required]
         public int SerialNo { get; set; }
         public string DutyName { get; set; }
-        public int AllowanceAmount { get; set; }
+        public string AllowanceAmount { get; set; }
 	}
 }

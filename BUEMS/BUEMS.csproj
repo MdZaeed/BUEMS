@@ -169,7 +169,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AllowancesController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
@@ -201,6 +200,10 @@
     <Compile Include="Migrations\201704220558072_Allowance Database Created.cs" />
     <Compile Include="Migrations\201704220558072_Allowance Database Created.Designer.cs">
       <DependentUpon>201704220558072_Allowance Database Created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704220640197_Allowance Database Edited.cs" />
+    <Compile Include="Migrations\201704220640197_Allowance Database Edited.Designer.cs">
+      <DependentUpon>201704220640197_Allowance Database Edited.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -355,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704220558072_Allowance Database Created.resx">
       <DependentUpon>201704220558072_Allowance Database Created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704220640197_Allowance Database Edited.resx">
+      <DependentUpon>201704220640197_Allowance Database Edited.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

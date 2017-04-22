@@ -111,9 +111,9 @@ using System.Linq;
                             new Department { SerialNo = 3, DepartmentName = "কম্পিউটার সায়েন্স" });
 
                         context.Allowances.AddOrUpdate(i => i.SerialNo,
-                            new Allowance { SerialNo = 1, DutyName = "ডিন", AllowanceAmount = 2500 },
-                            new Allowance { SerialNo = 2, DutyName = "চেয়ারম্যান", AllowanceAmount = 2500 },
-                            new Allowance { SerialNo = 3, DutyName = "শিক্ষার্থী উপদেষ্টা", AllowanceAmount = 1500} );
+                            new Allowance { SerialNo = 1, DutyName = "ডিন", AllowanceAmount = "২৫০০" },
+                            new Allowance { SerialNo = 2, DutyName = "চেয়ারম্যান", AllowanceAmount = "২৫০০" },
+                            new Allowance { SerialNo = 3, DutyName = "শিক্ষার্থী উপদেষ্টা", AllowanceAmount = "১৫০০" } );
         }
     }
 }
