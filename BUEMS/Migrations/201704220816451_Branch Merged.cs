@@ -3,7 +3,7 @@ namespace BUEMS.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Branchmerged : DbMigration
+    public partial class BranchMerged : DbMigration
     {
         public override void Up()
         {

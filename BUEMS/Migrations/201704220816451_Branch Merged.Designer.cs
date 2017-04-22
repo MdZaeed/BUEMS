@@ -7,13 +7,13 @@ namespace BUEMS.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Branchmerged : IMigrationMetadata
+    public sealed partial class BranchMerged : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Branchmerged));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BranchMerged));
         
         string IMigrationMetadata.Id
         {
-            get { return "201704220803068_Branch merged"; }
+            get { return "201704220816451_Branch Merged"; }
         }
         
         string IMigrationMetadata.Source
