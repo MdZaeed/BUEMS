@@ -112,9 +112,19 @@
                 new Department {SerialNo = 3, DepartmentName = "কম্পিউটার সায়েন্স"});
 
             context.Allowances.AddOrUpdate(i => i.SerialNo,
-                new Allowance {SerialNo = 1, DutyName = "ডিন", AllowanceAmount = "২৫০০"},
-                new Allowance {SerialNo = 2, DutyName = "চেয়ারম্যান", AllowanceAmount = "২৫০০"},
-                new Allowance {SerialNo = 3, DutyName = "শিক্ষার্থী উপদেষ্টা", AllowanceAmount = "১৫০০"});
+                new Allowance {SerialNo = 1, DutyName = "ডিন", AllowanceAmount = "৩০০০"},
+                new Allowance {SerialNo = 3, DutyName = "শিক্ষার্থী উপদেষ্টা", AllowanceAmount = "১৫০০"},
+                new Allowance {SerialNo = 4, DutyName = "শিক্ষা সহয়তা ভাতা", AllowanceAmount = "0"},
+                new Allowance {SerialNo = 5, DutyName = "চিকিৎসা ভাতা", AllowanceAmount = "১৫০০"},
+                new Allowance {SerialNo = 6, DutyName = "সহকারী প্রক্টর", AllowanceAmount = "১৫০০"},
+                new Allowance {SerialNo = 7, DutyName = "চেয়ারম্যান", AllowanceAmount = "৩০০০"},
+                new Allowance {SerialNo = 8, DutyName = "প্রোভোস্ট", AllowanceAmount = "২৫০০"},
+                new Allowance {SerialNo = 9, DutyName = "অতিরিক্ত দায়িত্ব", AllowanceAmount = "১০০০"},
+                new Allowance { SerialNo = 10, DutyName = "গবেষণা ভাতা", AllowanceAmount = "৫০০" },
+                new Allowance { SerialNo = 11, DutyName = "টেলিফোন ভাতা", AllowanceAmount = "৮০০" },
+                new Allowance { SerialNo = 11, DutyName = "পরিবহন", AllowanceAmount = "২০০" },
+                new Allowance { SerialNo = 11, DutyName = "রেভিনিউ স্ট্যাম্প", AllowanceAmount = "১০" }
+                ); 
 
             context.Grades.AddOrUpdate(i => i.GradeNo,
                 new Grade {GradeNo = 1, GradeRange = "৭৮০০০"},

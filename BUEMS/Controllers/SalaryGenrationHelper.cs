@@ -60,19 +60,19 @@ namespace BUEMS.Controllers
 
         public static int GetMedicalBill()
         {
-            return 1500;
+            return GetAllowanceFromDb("চিকিৎসা ভাতা");
         }
 
         public static int GetCurriculumAssistanceBill()
         {
-            return 0;
+            return GetAllowanceFromDb("শিক্ষা সহায়তা ভাতা");
         }
 
         public static int GetProctorAssistanceBill(Boolean answer)
         {
             if (answer)
             {
-                return 1500;
+                return GetAllowanceFromDb("সহকারী প্রক্টর");
             }
             return 0;
         }
@@ -90,7 +90,7 @@ namespace BUEMS.Controllers
         {
             if (answer)
             {
-                return 1500;
+                return GetAllowanceFromDb("চেয়ারম্যান");
             }
             return 0;
         }
@@ -99,7 +99,7 @@ namespace BUEMS.Controllers
         {
             if (answer)
             {
-                return 1000;
+                return GetAllowanceFromDb("প্রোভোস্ট");
             }
             return 0;
         }
@@ -108,7 +108,7 @@ namespace BUEMS.Controllers
         {
             if (answer)
             {
-                return 1000;
+                return GetAllowanceFromDb("অতিরিক্ত দায়িত্ব");
             }
             return 0;
         }
@@ -117,26 +117,26 @@ namespace BUEMS.Controllers
         {
             if (answer)
             {
-                return 1500;
+                return GetAllowanceFromDb("শিক্ষার্থী উপদেষ্টা");
             }
             return 0;
         }
 
         public static int GetResearchAllowance()
         {
-            return 500;
+            return GetAllowanceFromDb("গবেষণা ভাতা");
         }
 
         public static int GetTelephoneAllowance()
         {
-            return 800;
+            return GetAllowanceFromDb("টেলিফোন ভাতা");
         }
 
         public static int GetGpf(int mainSalary)
         {
             return (int)(mainSalary * .1);
         }
-
+         
         public static int GetBf(int mainSalary, string category)
         {
             if (category.Equals("শিক্ষক"))
@@ -154,7 +154,7 @@ namespace BUEMS.Controllers
         {
             if (answer)
             {
-                return 0;
+                return GetAllowanceFromDb("পরিবহন");
             }
             return 200;
         }
@@ -166,7 +166,7 @@ namespace BUEMS.Controllers
 
         public static int GetRevenueStampCost()
         {
-            return 10;
+            return GetAllowanceFromDb("রেভিনিউ স্ট্যাম্প");
         }
 
         public static int GetGrandTotal(Salary salary)
