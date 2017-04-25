@@ -58,6 +58,7 @@ namespace BUEMS.Controllers
             Salary salary = MapEmployeeToSalary(employee);
             return Json(salary, JsonRequestBehavior.AllowGet);
         }
+
         // GET: Salaries/Details/5
         public ActionResult Details(int? id)
         {
@@ -84,7 +85,11 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SerialNo,Name,Title,JoiningDate,MainSalary,PayableMainSalary,HouseRent,MedicalAllowance,CurriculumAssitanceAllowance,AssistantProctorAllowance,DeanORChairmanOrProvostAllowance,AdditionalDutiesOrStudentAdvisorAllowance,ResearchAllowance,TelephoneAllowance,Somonnoy,Total,GPF,BF,TransportationAllowance,IncomeTax,RevenueStamp,TotalSubtraction,NeatSalary")] Salary salary)
+        public ActionResult Create(
+            [Bind(
+                Include =
+                    "SerialNo,Name,Title,JoiningDate,MainSalary,PayableMainSalary,HouseRent,MedicalAllowance,CurriculumAssitanceAllowance,AssistantProctorAllowance,DeanORChairmanOrProvostAllowance,AdditionalDutiesOrStudentAdvisorAllowance,ResearchAllowance,TelephoneAllowance,Somonnoy,Total,GPF,BF,TransportationAllowance,IncomeTax,RevenueStamp,TotalSubtraction,NeatSalary"
+                )] Salary salary)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +121,11 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SerialNo,Name,Title,JoiningDate,MainSalary,PayableMainSalary,HouseRent,MedicalAllowance,CurriculumAssitanceAllowance,AssistantProctorAllowance,DeanORChairmanOrProvostAllowance,AdditionalDutiesOrStudentAdvisorAllowance,ResearchAllowance,TelephoneAllowance,Somonnoy,Total,GPF,BF,TransportationAllowance,IncomeTax,RevenueStamp,TotalSubtraction,NeatSalary")] Salary salary)
+        public ActionResult Edit(
+            [Bind(
+                Include =
+                    "SerialNo,Name,Title,JoiningDate,MainSalary,PayableMainSalary,HouseRent,MedicalAllowance,CurriculumAssitanceAllowance,AssistantProctorAllowance,DeanORChairmanOrProvostAllowance,AdditionalDutiesOrStudentAdvisorAllowance,ResearchAllowance,TelephoneAllowance,Somonnoy,Total,GPF,BF,TransportationAllowance,IncomeTax,RevenueStamp,TotalSubtraction,NeatSalary"
+                )] Salary salary)
         {
             if (ModelState.IsValid)
             {
@@ -167,12 +176,12 @@ namespace BUEMS.Controllers
             Salary salary = new Salary
             {
                 SerialNo = employee.SerialNo,
-                AdditionalDutiesAllowance = SalaryGenrationHelper.GetAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + SalaryGenrationHelper.GetStudentAdvisorAllowance(employee.IsStudentAdviser),
+                IdNo = employee.IdNo,
+                AdditionalDutiesAllowance = SalaryGenrationHelper.GetAdditionalDutiesAllowance(employee.IsAddiitonalDuties),
                 AssistantProctorAllowance = SalaryGenrationHelper.GetProctorAssistanceBill(employee.IsAssistantProctor),
                 AccountNo = employee.AccountNo,
                 BF = SalaryGenrationHelper.GetBf(employee.Salary, employee.Category),
                 CurriculumAssitanceAllowance = SalaryGenrationHelper.GetCurriculumAssistanceBill(),
-                //                DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
                 DeanAllowance = SalaryGenrationHelper.GetDeanAllowance(employee.IsDean),
                 GPF = SalaryGenrationHelper.GetGpf(employee.Salary),
                 HouseRent = SalaryGenrationHelper.CalculateHouseRent(employee.Salary),
@@ -190,26 +199,26 @@ namespace BUEMS.Controllers
                 TelephoneAllowance = SalaryGenrationHelper.GetTelephoneAllowance(),
                 Title = employee.Podobi,
                 TransportationAllowance = SalaryGenrationHelper.GetTransportationAllowance(employee.HasOwnTransportationMethod),
-                AssistantProvostAllowance = "",
-                BookAllowance = "",
+                BookAllowance = SalaryGenrationHelper.GetBookAllowance(),
                 ChairmanAllowance = SalaryGenrationHelper.GetChairmanAllowance(employee.IsChairman),
-                Club = "",
-                DevelopmentFund = "",
-                FestivalAllowance = "",
+                Club = SalaryGenrationHelper.GetClubAllowance(),
+                DevelopmentFund = SalaryGenrationHelper.GetDevelopmentFund(),
+                FestivalAllowance = SalaryGenrationHelper.GetFestivalAllowance(),
+                GasBill = SalaryGenrationHelper.GetGasBill(),
+                GroupInsurance = SalaryGenrationHelper.GetGroupInsurance(),
+                HouseRentSub = SalaryGenrationHelper.GetHouseRentSub(),
+                InternetBill = SalaryGenrationHelper.GetInternetBill(),
+                MoharghoAlloowance = SalaryGenrationHelper.GetMoharghoAllowance(),
+                PresonAllowance = SalaryGenrationHelper.GtePresonAllowance(),
+                ProvostAllowance = SalaryGenrationHelper.GetProvostAllowance(employee.IsProvost),
+                StudentAdvisorAllowance = SalaryGenrationHelper.GetStudentAdvisorAllowance(employee.IsStudentAdviser),
+                StudentDevelopmentFund = SalaryGenrationHelper.GetStudentDevelopmentAllowance(),
+                TeacherFamilyDevelopment = SalaryGenrationHelper.GetTeacherFamilyDevelopmentFund(),
+                WardenDirectorAllowance = "",
                 FutureFund = "",
-                GasBill = "",
                 Grade = "",
-                GroupInsurance = "",
-                HouseRentSub = "",
-                InternetBill = "",
-                MoharghoAlloowance = "",
                 OthersAddition = "",
-                PresonAllowance = "",
-                ProvostAllowance = "",
-                StudentAdvisorAllowance = "",
-                StudentDevelopmentFund = "",
-                TeacherFamilyDevelopment = "",
-                WardenDirectorAllowance = ""
+                AssistantProvostAllowance = ""
             };
             salary.Total = SalaryGenrationHelper.GetGrandTotal(salary);
             salary.TotalSubtraction = SalaryGenrationHelper.GetTotalSubtraction(salary);

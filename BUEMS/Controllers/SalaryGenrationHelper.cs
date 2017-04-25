@@ -201,6 +201,36 @@ namespace BUEMS.Controllers
             return GetAllowanceFromDb("গ্রুপ ইন্সুরেন্স");
         }
 
+        public static string GetHouseRentSub()
+        {
+            return GetAllowanceFromDb("বাড়ি ভাড়া");
+        }
+
+        public static string GetInternetBill()
+        {
+            return GetAllowanceFromDb("ইন্টারনেট বিল");
+        }
+
+        public static string GetMoharghoAllowance()
+        {
+            return GetAllowanceFromDb("মহার্ঘ্য ভাতা");
+        }
+
+        public static string GtePresonAllowance()
+        {
+            return GetAllowanceFromDb("প্রেষণ ভাতা");
+        }
+
+        public static string GetStudentDevelopmentAllowance()
+        {
+            return GetAllowanceFromDb("ছাত্র কল্যাণ ভাতা");
+        }
+
+        public static string GetTeacherFamilyDevelopmentFund()
+        {
+            return GetAllowanceFromDb("শিক্ষক পরিবার কল্যান");
+        }
+
         public static string GetGrandTotal(Salary salary)
         {
             int grandTotal = (salary.PayableMainSalary)
