@@ -29,6 +29,8 @@ namespace BUEMS.Models
         public string AccountNo { get; set; }
         [Display(Name = "বেতন স্কেল/ গ্রেড")]
         public string MainSalaryGrade { get; set; }
+        [Display(Name = "ইনক্রীমেন্ট সংখ্যা")]
+        public string IncrementNo { get; set; }
         [Display(Name = "লিঙ্গ")]
         public string Sex { get; set; }
         [Display(Name = "মুক্তিযোদ্ধা")]

@@ -48,10 +48,11 @@
                     IsStudentAdviser = false,
                     IsTeacher = true,
                     JoiningDate = "03/03/2012",
-                    MainSalaryGrade = "10000",
+                    MainSalaryGrade = "৬৬০০০-৭৬৪৯০",
                     Podobi = "অধ্যাপক",
                     Salary = 10000,
-                    Sex = "Male"
+                    Sex = "Male",
+                    IncrementNo = "২"
                 },
                 new Employee
                 {
@@ -72,10 +73,11 @@
                     IsStudentAdviser = true,
                     IsTeacher = false,
                     JoiningDate = "02/02/2012",
-                    MainSalaryGrade = "16750",
+                    MainSalaryGrade = "৬৬০০০-৭৬৪৯০",
                     Podobi = "অধ্যাপক",
                     Salary = 10000,
-                    Sex = "Male"
+                    Sex = "Male",
+                    IncrementNo = "৪"
                 },
                 new Employee
                 {
@@ -96,10 +98,11 @@
                     IsStudentAdviser = true,
                     IsTeacher = false,
                     JoiningDate = "01/01/2014",
-                    MainSalaryGrade = "16750",
+                    MainSalaryGrade = "৬৬০০০-৭৬৪৯০",
                     Podobi = "অধ্যাপক",
                     Salary = 10000,
-                    Sex = "Male"
+                    Sex = "Male",
+                    IncrementNo = "১"
                 });
             context.Titles.AddOrUpdate(i => i.SerialNo,
                 new Title {SerialNo = 1, TitleName = "অধ্যাপক", Category = "শিক্ষক"},
@@ -131,6 +134,15 @@
                 new Grade {GradeNo = 2, GradeRange = "৬৬০০০-৭৬৪৯০"},
                 new Grade {GradeNo = 3, GradeRange = "৫৬৫০০-৭৪৪০০"},
                 new Grade {GradeNo = 4, GradeRange = "৫০০০০-৭১২০০"});
+
+            context.Taxes.AddOrUpdate( i => i.SerialNo,
+                new Tax { Grade = 1, Scale = 1, MainSalary = 78000, MonthlyTaxMale = 4900, MonthlyTaxFemale = 4275, MonthlyTaxFreedomFighter = 2713},
+                new Tax { Grade = 2, Scale = 1, MainSalary = 66000, MonthlyTaxMale = 3409, MonthlyTaxFemale = 2784, MonthlyTaxFreedomFighter = 1222},
+                new Tax { Grade = 2, Scale = 2, MainSalary = 68480, MonthlyTaxMale = 3717, MonthlyTaxFemale = 3092, MonthlyTaxFreedomFighter = 1530},
+                new Tax { Grade = 2, Scale = 3, MainSalary = 71050, MonthlyTaxMale = 4037, MonthlyTaxFemale = 3412, MonthlyTaxFreedomFighter = 1849},
+                new Tax { Grade = 2, Scale = 4, MainSalary = 73720, MonthlyTaxMale = 4368, MonthlyTaxFemale = 3743, MonthlyTaxFreedomFighter = 2181},
+                new Tax { Grade = 2, Scale = 5, MainSalary = 76490, MonthlyTaxMale = 4712, MonthlyTaxFemale = 4087, MonthlyTaxFreedomFighter = 2525}
+                );
         }
     }
 }

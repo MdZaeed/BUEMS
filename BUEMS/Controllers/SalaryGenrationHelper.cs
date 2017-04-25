@@ -55,7 +55,7 @@ namespace BUEMS.Controllers
                     return "১৬০০০";
                 }
             }
-            return tax + "";
+            return LanguageConverter.EnglishToBangla(tax + "");
         }
 
         public static string GetMedicalBill()

@@ -58,10 +58,25 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Create([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                var grade = from a in db.Grades
+                    where a.GradeRange.Equals(employee.MainSalaryGrade)
+                    select a;
+                Grade orDefault = grade.FirstOrDefault();
+                if (orDefault != null)
+                {
+                    int grad = orDefault.GradeNo;
+                    int increment = Int32.Parse(LanguageConverter.BanglaToEnglish(employee.IncrementNo));
+                    var mainsalaryString = from a in db.Taxes
+                        where a.Grade.Equals(grad) && a.Scale.Equals(increment)
+                        select a;
+                    var firstOrDefault = mainsalaryString.FirstOrDefault();
+                    if (firstOrDefault != null)
+                        employee.Salary = firstOrDefault.MainSalary;
+                }
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
