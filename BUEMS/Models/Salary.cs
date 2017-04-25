@@ -33,77 +33,77 @@ namespace BUEMS.Models
         [Display(Name = "প্রাপ্য মূল বেতন")]
         public int PayableMainSalary { get; set; }
         [Display(Name = "বাড়িভাড়া")]
-        public int HouseRent { get; set; }
+        public string HouseRent { get; set; }
         [Display(Name = "মহার্ঘ্য ভাতা")]
-        public int MoharghoAlloowance { get; set; }
+        public string MoharghoAlloowance { get; set; }
         [Display(Name = "চিকিৎসা ভাতা")]
-        public int MedicalAllowance { get; set; }
+        public string MedicalAllowance { get; set; }
         [Display(Name = "টেলিফোন ভাতা")]
-        public int TelephoneAllowance { get; set; }
+        public string TelephoneAllowance { get; set; }
         [Display(Name = "শিক্ষা সহয়তা ভাতা")]
-        public int CurriculumAssitanceAllowance { get; set; }
+        public string CurriculumAssitanceAllowance { get; set; }
         [Display(Name = "প্রক্টর/ সহকারী প্রক্টর ভাতা")]
-        public int AssistantProctorAllowance { get; set; }
+        public string AssistantProctorAllowance { get; set; }
         [Display(Name = "ডিন ভাতা")]
-        public int DeanAllowance { get; set; }
+        public string DeanAllowance { get; set; }
         [Display(Name = "চেয়ারম্যান ভাতা")]
-        public int ChairmanAllowance { get; set; }
+        public string ChairmanAllowance { get; set; }
         [Display(Name = "প্রোভোস্ট ভাতা")]
-        public int ProvostAllowance { get; set; }
+        public string ProvostAllowance { get; set; }
         [Display(Name = "সহকারী প্রোভোস্ট ভাতা")]
-        public int AssistantProvostAllowance { get; set; }
+        public string AssistantProvostAllowance { get; set; }
         [Display(Name = "ওয়ার্ডেন পরিচালক ভাতা")]
-        public int WardenDirectorAllowance { get; set; }
+        public string WardenDirectorAllowance { get; set; }
         [Display(Name = "শিক্ষার্থী উপদেস্টা ভাতা")]
-        public int StudentAdvisorAllowance { get; set; }
+        public string StudentAdvisorAllowance { get; set; }
         [Display(Name = "গবেষনা ভাতা")]
-        public int ResearchAllowance { get; set; }
+        public string ResearchAllowance { get; set; }
         [Display(Name = "বই ভাতা")]
-        public int BookAllowance { get; set; }
+        public string BookAllowance { get; set; }
         [Display(Name = "অতিরিক্ত দায়িত্ব ভাতা")]
-        public int AdditionalDutiesAllowance { get; set; }
+        public string AdditionalDutiesAllowance { get; set; }
         [Display(Name = "প্রেষণ ভাতা")]
-        public int PresonAllowance { get; set; }
+        public string PresonAllowance { get; set; }
         [Display(Name = "অন্যান্য(যদি থাকে) ")]
-        public int OthersAddition { get; set; }
+        public string OthersAddition { get; set; }
         [Display(Name = "সমন্বয়")]
-        public int Somonnoy { get; set; }
+        public string Somonnoy { get; set; }
         [Display(Name = "সর্বমোট")]
-        public int Total { get; set; }
+        public string Total { get; set; }
         [Display(Name = "ভবিষ্যৎ তহবিল")]
-        public int GPF { get; set; }
+        public string GPF { get; set; }
         [Display(Name = "ছাত্র কল্যান তহবিল")]
-        public int BF { get; set; }
+        public string BF { get; set; }
         [Display(Name = "ভবিষ্যৎ তহবিল আগাম প্রদান")]
-        public int FutureFund { get; set; }
+        public string FutureFund { get; set; }
         [Display(Name = "পরিবহন সুবিধা")]
-        public int TransportationAllowance { get; set; }
+        public string TransportationAllowance { get; set; }
         [Display(Name = "আয়কর")]
-        public int IncomeTax { get; set; }
+        public string IncomeTax { get; set; }
         [Display(Name = "রেভিনিউ স্ট্যাম্প")]
-        public int RevenueStamp { get; set; }
+        public string RevenueStamp { get; set; }
         [Display(Name = "কল্যান ফান্ড")]
-        public int DevelopmentFund{ get; set; }
+        public string DevelopmentFund{ get; set; }
         [Display(Name = "ছাত্র কল্যান ভাতা")]
-        public int StudentDevelopmentFund{get;set;}
+        public string StudentDevelopmentFund{get;set;}
         [Display(Name = "শিক্ষক পরিবার কল্যান")]
-        public int TeacherFamilyDevelopment{get;set;}
+        public string TeacherFamilyDevelopment{get;set;}
         [Display(Name = "ক্লাব")]
-        public int Club{ get; set; }
+        public string Club{ get; set; }
         [Display(Name = "বাসা ভাড়া")]
-        public int HouseRentSub{ get; set; }
+        public string HouseRentSub{ get; set; }
         [Display(Name = "গ্যাস বিল")]
-        public int GasBill { get; set; }
+        public string GasBill { get; set; }
         [Display(Name = "ইন্টারনেট বিল")]
-        public int InternetBill {get; set; }
+        public string InternetBill {get; set; }
         [Display(Name = "গ্রুপ ইন্সুরেন্স")]
-        public int GroupInsurance {get; set; }
+        public string GroupInsurance {get; set; }
         [Display(Name = "মোট কর্তন")]
-        public int TotalSubtraction { get; set; }
+        public string TotalSubtraction { get; set; }
         [Display(Name = "নীট বেতন ভাতা")]
-        public int NeatSalary { get; set; }
+        public string NeatSalary { get; set; }
         [Display(Name = "উৎসব ভাতা")]
-        public int FestivalAllowance { get; set; }
+        public string FestivalAllowance { get; set; }
 
     }
 }
