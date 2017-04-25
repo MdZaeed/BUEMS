@@ -162,247 +162,38 @@ namespace BUEMS.Controllers
             base.Dispose(disposing);
         }
 
-        protected int CalculateHouseRent(int mainSalary)
-        {
-            int tax = 0;
-            if (mainSalary <= 9700)
-            {
-                tax = (int)(mainSalary * .55);
-                if (tax < 5000)
-                {
-                    return 5000;
-                }
-            }
-            else if (mainSalary <= 16000)
-            {
-                tax = (int)(mainSalary * .5);
-                if (tax < 5400)
-                {
-                    return 5400;
-                }
-            }
-            else if (mainSalary <= 35500)
-            {
-                tax = (int)(mainSalary * .45);
-                if (tax < 8000)
-                {
-                    return 8000;
-                }
-            }
-            else
-            {
-                tax = (int)(mainSalary * .4);
-                if (tax < 16000)
-                {
-                    return 16000;
-                }
-            }
-            return tax;
-        }
-
-        public int getMedicalBill()
-        {
-            return 1500;
-        }
-
-        public int getCurriculumAssistanceBill()
-        {
-            return 0;
-        }
-
-        public int getProctorAssistanceBill(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1500;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int getDeanAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1500;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int getChairmanAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1500;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int getProvostAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1000;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int getAdditionalDutiesAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1000;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        public int getStudentAdvisorAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 1500;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
-
-        public int getResearchAllowance()
-        {
-            return 500;
-        }
-
-        public int getTelephoneAllowance()
-        {
-            return 800;
-        }
-
-        public int getGPF(int MainSalary)
-        {
-            return (int)(MainSalary * .1);
-        }
-
-        public int getBF(int MainSalary, string Category)
-        {
-            if (Category.Equals("শিক্ষক"))
-            {
-                return (int)(MainSalary * .1);
-            }
-            else if (Category.Equals("??????") || Category.Equals("?????????") || Category.Equals("?? ??????"))
-            {
-                return (int)(MainSalary * .25);
-            }
-            else
-            {
-                return (int)(MainSalary * .125);
-            }
-        }
-
-        public int getTransportationAllowance(Boolean answer)
-        {
-            if (answer)
-            {
-                return 0;
-            }
-            else
-            {
-                return 200;
-            }
-
-        }
-
-        public int getTax(int Scale, int Grade, string Sex, Boolean isFreedomFighter)
-        {
-            return 0;
-        }
-
-        public int getRevenueStampCost()
-        {
-            return 10;
-        }
-
-        public int getGrandTotal(Salary salary)
-        {
-            int grandTotal = salary.PayableMainSalary
-                + salary.HouseRent
-                + salary.MedicalAllowance
-                + salary.CurriculumAssitanceAllowance
-                + salary.AssistantProctorAllowance
-                + salary.DeanAllowance
-                + salary.AdditionalDutiesAllowance
-                + salary.ResearchAllowance
-                + salary.TelephoneAllowance
-                + salary.Somonnoy;
-            return grandTotal;
-        }
-
-        public int getTotalSubtraction(Salary salary)
-        {
-            int subbed = salary.GPF
-                + salary.BF
-                + salary.TransportationAllowance
-                + salary.IncomeTax
-                + salary.RevenueStamp;
-            return subbed;
-        }
-
-        public int getNeatTotalSalary(Salary salary)
-        {
-            int neat = salary.Total - salary.TotalSubtraction;
-            return neat;
-        }
-
         public Salary MapEmployeeToSalary(Employee employee)
         {
             Salary salary = new Salary
             {
                 SerialNo = employee.SerialNo,
-                AdditionalDutiesAllowance = getAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + getStudentAdvisorAllowance(employee.IsStudentAdviser),
-                AssistantProctorAllowance = getProctorAssistanceBill(employee.IsAssistantProctor),
+                AdditionalDutiesAllowance = SalaryGenrationHelper.GetAdditionalDutiesAllowance(employee.IsAddiitonalDuties) + SalaryGenrationHelper.GetStudentAdvisorAllowance(employee.IsStudentAdviser),
+                AssistantProctorAllowance = SalaryGenrationHelper.GetProctorAssistanceBill(employee.IsAssistantProctor),
                 AccountNo = employee.AccountNo,
-                BF = getBF(employee.Salary, employee.Category),
-                CurriculumAssitanceAllowance = getCurriculumAssistanceBill(),
+                BF = SalaryGenrationHelper.GetBf(employee.Salary, employee.Category),
+                CurriculumAssitanceAllowance = SalaryGenrationHelper.GetCurriculumAssistanceBill(),
                 //                DeanORChairmanOrProvostAllowance = getDeanAllowance(employee.IsDean) + getChairmanAllowance(employee.IsChairman) + getProvostAllowance(employee.IsProvost),
-                GPF = getGPF(employee.Salary),
-                HouseRent = CalculateHouseRent(employee.Salary),
-                IncomeTax = getTax(1, 1, employee.Sex, employee.IsFreedomFighter),
+                DeanAllowance = SalaryGenrationHelper.GetDeanAllowance(employee.IsDean),
+                GPF = SalaryGenrationHelper.GetGpf(employee.Salary),
+                HouseRent = SalaryGenrationHelper.CalculateHouseRent(employee.Salary),
+                IncomeTax = SalaryGenrationHelper.GetTax(1, 1, employee.Sex, employee.IsFreedomFighter),
                 Institute = employee.Department,
                 JoiningDate = employee.JoiningDate,
                 MainSalary = employee.Salary,
-                MedicalAllowance = getMedicalBill(),
+                MedicalAllowance = SalaryGenrationHelper.GetMedicalBill(),
                 Month = "ফেব্রুয়ারি/২০১৭",
                 Name = employee.FullName,
                 PayableMainSalary = employee.Salary,
-                ResearchAllowance = getResearchAllowance(),
-                RevenueStamp = getRevenueStampCost(),
+                ResearchAllowance = SalaryGenrationHelper.GetResearchAllowance(),
+                RevenueStamp = SalaryGenrationHelper.GetRevenueStampCost(),
                 Somonnoy = 0,
-                TelephoneAllowance = getTelephoneAllowance(),
+                TelephoneAllowance = SalaryGenrationHelper.GetTelephoneAllowance(),
                 Title = employee.Podobi,
-                TransportationAllowance = getTransportationAllowance(employee.HasOwnTransportationMethod)
+                TransportationAllowance = SalaryGenrationHelper.GetTransportationAllowance(employee.HasOwnTransportationMethod)
             };
-            salary.Total = getGrandTotal(salary);
-            salary.TotalSubtraction = getTotalSubtraction(salary);
-            salary.NeatSalary = getNeatTotalSalary(salary);
+            salary.Total = SalaryGenrationHelper.GetGrandTotal(salary);
+            salary.TotalSubtraction = SalaryGenrationHelper.GetTotalSubtraction(salary);
+            salary.NeatSalary = SalaryGenrationHelper.GetNeatTotalSalary(salary);
 
             return salary;
         }
