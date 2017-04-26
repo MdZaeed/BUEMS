@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Salaries";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+
+<div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
+    <div class="container">
+        <a class="btn btn-info" href="/SalaryGen/Salary">Generate Salary Sheet</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">Select Month 
+                <select ng-model="selectedMonth">
+                    <option value='Janaury'>Janaury</option>
+                    <option value='February'>February</option>
+                    <option value='March'>March</option>
+                    <option value='April'>April</option>
+                    <option value='May'>May</option>
+                    <option value='June'>June</option>
+                    <option value='July'>July</option>
+                    <option value='August'>August</option>
+                    <option value='September'>September</option>
+                    <option value='October'>October</option>
+                    <option value='November'>November</option>
+                    <option value='December'>December</option>
+                </select>
+                Select Year
+                <select ng-model="selectedYear">
+                    <option value='2016'>2016</option>
+                    <option value='2017'>2017</option>
+                </select>
+                <a class="btn" ng-click="update()">Show</a>
+            </div>
+            <div class="col-md-4"><input type="text" style="float:right" placeholder="Search" ng-model="search" /></div>
+        </div>
+    </div>
+    <div class="container" style="overflow:scroll; margin-top:20px; max-height:1000px">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key, value) in salaries[0]">
+                            {{key}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="salary in salaries | filter: search">
+                        <td ng-repeat="(key, value) in salary">
+                            {{salary[key]}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/controller/Salaries.js"></script>
+    <script src="~/Scripts/service/baseService.js"></script>
+</div>
+
+
+
+

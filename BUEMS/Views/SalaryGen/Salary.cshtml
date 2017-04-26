@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Salaries";
+}
+
+<script src="~/Scripts/angular.min.js"></script>
+
+<div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
+    <div class="container">
+        <a class="btn btn-info" href="/SalaryGen/All">Show All</a><br />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="btn btn-primary" ng-click="previous()">Prev</a>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-primary" style="float:right" ng-click="next()">Next</a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="overflow-y:scroll; margin-top:20px; max-height:600px">
+        <div class="row">
+            <table class="table table-bordered">
+                <tr ng-repeat="(key, value) in salary">
+                    <td>{{key}}</td>
+                    <td><input ng-model="salary[key]" class="form-control"/></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/controller/individualUpdate.js"></script>
+    <script src="~/Scripts/service/baseService.js"></script>
+</div>
+
+
+
+

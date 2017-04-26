@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BUEMS.Models;
+using Newtonsoft.Json;
 
 namespace BUEMS.Controllers
 {
@@ -38,6 +39,39 @@ namespace BUEMS.Controllers
                 salaries.Add(salary);
             }
             return View(salaries);
+        }
+
+        public ActionResult NewIndex(string month, string year)
+        {
+            if (month.Equals("") && year.Equals(""))
+            {
+                DateTime dateTime = DateTime.Now;
+                int monthInt = dateTime.Month;
+
+                month = MonthMap.GetMonthData()[monthInt].MonthNameInEnglish;
+                int yearInt = dateTime.Year;
+                year = yearInt + "";
+            }
+
+            string banglaMonth = "";
+            var data=MonthMap.GetMonthData().Find(i => i.MonthNameInEnglish.Equals(month));
+            var monthBangla = data.MonthNameInBangla;
+            var yearBangla = LanguageConverter.EnglishToBangla(year);
+            string searchString = monthBangla + "/" + yearBangla;
+
+            var datam = from a in db.Salaries
+                where a.Month.Equals(searchString)
+                select a;
+
+            return Json(datam, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SalarySheetEdit(string data)
+        {
+            List<Salary> salaries = (List<Salary>) JsonConvert.DeserializeObject(data);
+            List<Salary> newSalaries = UpdateSalaryList(salaries);
+            return Json(newSalaries, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult SalarySheetAng()
@@ -225,6 +259,23 @@ namespace BUEMS.Controllers
             salary.NeatSalary = SalaryGenrationHelper.GetNeatTotalSalary(salary);
 
             return salary;
+        }
+
+        public List<Salary> UpdateSalaryList(List<Salary> salaries )
+        {
+            List<Salary> newSalaries = new List<Salary>();
+            foreach (Salary salary in salaries)
+            {
+                Salary newSalary = salary;
+                newSalary.BF = SalaryGenrationHelper.GetBf(salary.MainSalary, "শিক্ষক");
+                newSalary.GPF = SalaryGenrationHelper.GetGpf(salary.MainSalary);
+                newSalary.Total = SalaryGenrationHelper.GetGrandTotal(newSalary);
+                newSalary.TotalSubtraction = SalaryGenrationHelper.GetTotalSubtraction(newSalary);
+                newSalary.NeatSalary = SalaryGenrationHelper.GetNeatTotalSalary(newSalary);
+
+                newSalaries.Add(newSalary);
+            }
+            return newSalaries; 
         }
     }
 }

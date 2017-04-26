@@ -250,6 +250,7 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DropDownDataCreator.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\ExtraData.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LanguageConverter.cs" />
@@ -275,7 +276,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\controller\individualUpdate.js" />
     <Content Include="Scripts\controller\reportByDate.js" />
+    <Content Include="Scripts\controller\Salaries.js" />
     <Content Include="Scripts\controller\sallarySheet.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -371,6 +374,10 @@
     <Content Include="Views\Allowances\Details.cshtml" />
     <Content Include="Views\Allowances\Edit.cshtml" />
     <Content Include="Views\Allowances\Index.cshtml" />
+    <Content Include="Views\SalaryGen\Salaries.cshtml" />
+    <Content Include="Views\SalaryGen\Salary.cshtml" />
+    <Content Include="Views\Home\Pop.cshtml" />
+    <Content Include="Views\Shared\_mPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

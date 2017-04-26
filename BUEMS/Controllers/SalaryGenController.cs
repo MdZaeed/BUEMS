@@ -28,5 +28,15 @@ namespace BUEMS.Controllers
         {
             return View();
         }
+
+        public ActionResult Salaries()
+        {
+            return View();
+        }
+
+        public ActionResult Salary()
+        {
+            return View();
+        }
     }
 }

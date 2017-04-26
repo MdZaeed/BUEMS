@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BUEMS.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace BUEMS.Controllers
 {
     public class HomeController : Controller
     {
+        static BUEMSDbContext _db = new BUEMSDbContext();
+
         public ActionResult Index()
         {
+            var title = _db.Titles.ToList();
+            ViewBag.TitlesCom = title;
+
+            var category = _db.Titles.Select(i => i.Category).Distinct();
+            ViewBag.CategoriesCom = category;
+
             return View();
         }
 

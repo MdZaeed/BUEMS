@@ -1,9 +1,46 @@
-﻿@{
+﻿@using BUEMS.Models
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="row" style="">
+<div>
     <h3>Welcome To University of Barisal</h3>
+</div>
+
+<div id="Content" style="width: 20%">
+    <p>
+    <ul>
+        <li class="dropdown">
+            <div class="dropdown">
+                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Employee Info <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (string category in @ViewBag.CategoriesCom)
+                    {
+                        <li class="dropdown-submenu">
+                            <a class="test" href="#">@category<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (Title title in ViewBag.TitlesCom)
+                                {
+                                    if (title.Category.Equals(category))
+                                    {
+                                        string link = "/Employees/Index?cat=" + @title.TitleName;
+                                        <li><a href="@link">@title.TitleName</a></li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </li>
+        <li>@Html.ActionLink("Salary Sheet", "Salaries", "SalaryGen")</li>
+        <li>@Html.ActionLink("Department", "Index", "Departments")</li>
+        <li>@Html.ActionLink("Title", "Index", "Titles")</li>
+    </ul>
+        </p>
+</div>
+
+<div id="Content" style="width: 70%">
     <p>The declaration for establishing a Public University in the then Barisal division was made by the Founder of Bangladesh, the Father of the nation, Bangabandhu Sheikh Mujibur Rahman in 1973. Several half-hearted attempts were made by the different political governments after 1980s but it was in 2009 that the establishment of the University got meaningfully underway by the Ministry of Education, and the Honorable President of the Peopleâ€™s Republic of Bangladesh Md. Zillur Rahman appointed Professor Dr. Md. Harunor Rashid Khan of the Department of Soil, Water and Environment of the University of Dhaka on 18th February 2010 as the Project Director to establish the University of Barisal. The law of the University of Barisal has been amended and passed by the National Assembly of Bangladesh on 16th June 2010. Thanks to further initiatives from University Grants Commission and the Ministry of Education, the University was eventually established by the Honorable Prime Minister Sheikh Hasina through foundation stone laying on 22nd February 2011.</p>
 
 </div>

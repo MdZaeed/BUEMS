@@ -15,10 +15,17 @@ namespace BUEMS.Controllers
         private BUEMSDbContext db = new BUEMSDbContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(string cat)
         {
-            return View(db.Employees.ToList());
+            if (cat.Equals(""))
+            {
+                return View(db.Employees.ToList());
+            }else
+            {
+                return View(db.Employees.Where(i => i.Podobi.Equals(cat)).ToList());
+            }
         }
+    
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
