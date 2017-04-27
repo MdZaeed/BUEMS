@@ -20,7 +20,7 @@ function ($scope, baseService) {
     month[11] = "December";
     $scope.selectedMonth = month[date.getMonth()];
     $scope.selectedYear = date.getFullYear();
-    baseService.get("Salaries/NewIndex?month=" + $scope.selectedMonth + "&year=" + $scope.selectedYear)
+    baseService.get("/Salaries/NewIndex?month=" + $scope.selectedMonth + "&year=" + $scope.selectedYear)
     .then(function (response) {
         $scope.salaries = response;
 
