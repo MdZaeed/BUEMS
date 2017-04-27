@@ -20,7 +20,7 @@ namespace BUEMS.Models
         public string Title { get; set; }
         [Display(Name = "বিভাগ/ইনস্ন্টিটিউট/দপ্তর")]
         public string Institute { get; set; }
-        [Display(Name = "যোগদানের তারিখ")]
+        [Display(Name = "বর্তমান পদে যোগদানের তারিখ")]
         public string JoiningDate { get; set; }
         [Display(Name = "মাসের নাম")]
         public string Month { get; set; }

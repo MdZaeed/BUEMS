@@ -338,7 +338,6 @@
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Salaries\Create.cshtml" />
     <Content Include="Views\Salaries\Delete.cshtml" />
     <Content Include="Views\Salaries\Details.cshtml" />
@@ -378,6 +377,9 @@
     <Content Include="Views\SalaryGen\Salary.cshtml" />
     <Content Include="Views\Home\Pop.cshtml" />
     <Content Include="Views\Shared\_mPartialView.cshtml" />
+    <Content Include="Views\Employees\QuickFixIndex.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\SalaryGen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

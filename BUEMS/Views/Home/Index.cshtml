@@ -23,20 +23,22 @@
                                 {
                                     if (title.Category.Equals(category))
                                     {
-                                        string link = "/Employees/Index?cat=" + @title.TitleName;
+                                        string link = "/Employees/QuickFIxIndex?cat=" + @title.TitleName;
                                         <li><a href="@link">@title.TitleName</a></li>
                                     }
                                 }
                             </ul>
                         </li>
                     }
-                    <li><a href="/Employees/Index?cat=">All</a></li>
+                    <li><a href="/Employees/QuickFIxIndex?cat=">সকল</a></li>
                 </ul>
             </div>
         </li>
         <li>@Html.ActionLink("Salary Sheet", "Salaries", "SalaryGen")</li>
         <li>@Html.ActionLink("Department", "Index", "Departments")</li>
         <li>@Html.ActionLink("Title", "Index", "Titles")</li>
+        <li>@Html.ActionLink("New Employee","Create","Employees")</li>
+        <li>@Html.ActionLink("Allowances","Index","Allowances")</li>
     </ul>
         </p>
 </div>

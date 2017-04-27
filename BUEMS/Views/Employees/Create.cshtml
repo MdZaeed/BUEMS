@@ -6,6 +6,73 @@
 
 <h2>Create</h2>
 
+<script>
+    var selectedBox = null;
+    var selectedBoxA = null;
+    var selectedBoxB = null;
+
+    $(document).ready(function () {
+        $(".Deans").click(function () {
+            selectedBox = this.id;
+
+            $(".Deans").each(function () {
+                if (this.id == selectedBox) {
+                    this.checked = true;
+                }
+                else {
+                    this.checked = false;
+                };
+            });
+        });
+
+        $(".Provost").click(function () {
+            selectedBoxA = this.id;
+
+            $(".Provost").each(function () {
+                if (this.id == selectedBoxA) {
+                    this.checked = true;
+                }
+                else {
+                    this.checked = false;
+                };
+            });
+        });
+
+        $(".Proctor").click(function () {
+            selectedBoxB = this.id;
+
+            $(".Proctor").each(function () {
+                if (this.id == selectedBoxB) {
+                    this.checked = true;
+                }
+                else {
+                    this.checked = false;
+                };
+            });
+        });
+    });
+
+</script>
+
+<script>
+    var selectedBox = null;
+
+    $(document).ready(function () {
+        $(".Deans, .Provost, .Proctor").click(function () {
+            selectedBox = this.id;
+
+            $(".Deans, .Provost, .Proctor").each(function () {
+                if (this.id == selectedBox) {
+                    this.checked = true;
+                }
+                else {
+                    this.checked = false;
+                };
+            });
+        });
+    });
+
+</script>
 
 @using (Html.BeginForm()) 
 {
@@ -46,13 +113,16 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*        <div class="form-group">
             @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
+        
+        
+        @Html.HiddenFor(model => model.Salary)
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -132,8 +202,7 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-offset-2">
                 <label>
                     @Html.RadioButtonFor(m => m.Sex, "পুরুষ", new { id = "", @checked = true })
                     <span>পুরুষ</span>
@@ -183,7 +252,7 @@
             @Html.LabelFor(model => model.IsDean, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDean)
+                    @Html.EditorFor(model => model.IsDean, new { htmlAttributes = new { @class = "Deans" } })
                     @Html.ValidationMessageFor(model => model.IsDean, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -193,7 +262,7 @@
             @Html.LabelFor(model => model.IsChairman, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsChairman)
+                    @Html.EditorFor(model => model.IsChairman, new { htmlAttributes = new { @class = "Deans" } })
                     @Html.ValidationMessageFor(model => model.IsChairman, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -213,7 +282,7 @@
             @Html.LabelFor(model => model.IsProctor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsProctor)
+                    @Html.EditorFor(model => model.IsProctor, new { htmlAttributes = new { @class = "Proctor" } })
                     @Html.ValidationMessageFor(model => model.IsProctor, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -223,7 +292,7 @@
             @Html.LabelFor(model => model.IsAssistantProctor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsAssistantProctor)
+                    @Html.EditorFor(model => model.IsAssistantProctor, new { htmlAttributes = new { @class = "Proctor" } })
                     @Html.ValidationMessageFor(model => model.IsAssistantProctor, "", new { @class = "text-danger" })
                 </div>
             </div>

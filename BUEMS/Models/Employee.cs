@@ -23,7 +23,7 @@ namespace BUEMS.Models
         public string Category { get; set; }
         [Display(Name = "ডিপার্টমেন্ট")]
         public string Department { get; set; }
-        [Display(Name = "যোগদানের তারিখ")]
+        [Display(Name = "বর্তমান পদে যোগদানের তারিখ")]
         public string JoiningDate { get; set; }
         [Display(Name = "অ্যাকাউন্ট নাম্বার")]
         public string AccountNo { get; set; }

@@ -15,15 +15,20 @@ namespace BUEMS.Controllers
         private BUEMSDbContext db = new BUEMSDbContext();
 
         // GET: Employees
-        public ActionResult Index(string cat)
+        public ActionResult QuickFixIndex(string cat)
         {
-            if (cat.Equals(""))
+            if (cat.Equals("") || cat.Equals("সকল"))
             {
                 return View(db.Employees.ToList());
             }else
             {
                 return View(db.Employees.Where(i => i.Podobi.Equals(cat)).ToList());
             }
+        }
+
+        public ActionResult Index()
+        {
+            return RedirectToAction("QuickFixIndex",new { cat = "সকল"});
         }
     
 
@@ -57,7 +62,8 @@ namespace BUEMS.Controllers
             var departments = db.Departments.ToList();
             ViewBag.Departments = departments;
 
-            return View();
+            Employee employee = new Employee(){Salary = 0 , IsTeacher = true};
+            return View(employee);
         }
 
         // POST: Employees/Create
@@ -104,6 +110,19 @@ namespace BUEMS.Controllers
             {
                 return HttpNotFound();
             }
+
+            var grades = db.Grades.ToList();
+            ViewBag.Grades = grades;
+
+            var titles = db.Titles.ToList();
+            ViewBag.Titles = titles;
+
+            var categories = db.Titles.Select(i => i.Category).Distinct().ToList();
+            ViewBag.Categories = categories;
+
+            var departments = db.Departments.ToList();
+            ViewBag.Departments = departments;
+
             return View(employee);
         }
 
@@ -112,10 +131,25 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Edit([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                var grade = from a in db.Grades
+                            where a.GradeRange.Equals(employee.MainSalaryGrade)
+                            select a;
+                Grade orDefault = grade.FirstOrDefault();
+                if (orDefault != null)
+                {
+                    int grad = orDefault.GradeNo;
+                    int increment = Int32.Parse(LanguageConverter.BanglaToEnglish(employee.IncrementNo));
+                    var mainsalaryString = from a in db.Taxes
+                                           where a.Grade.Equals(grad) && a.Scale.Equals(increment)
+                                           select a;
+                    var firstOrDefault = mainsalaryString.FirstOrDefault();
+                    if (firstOrDefault != null)
+                        employee.Salary = firstOrDefault.MainSalary;
+                }
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

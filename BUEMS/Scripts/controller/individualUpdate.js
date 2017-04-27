@@ -31,7 +31,7 @@ function ($scope, baseService) {
     });
 
     $scope.update = function () {
-        baseService.put($scope.salary, "/Salaries/IndividualUpdate/");
+        //baseService.put($scope.salary, "/Salaries/IndividualUpdate/");
     }
     $scope.next = function () {
         $scope.update();
