@@ -15,11 +15,13 @@ namespace BUEMS.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext _context;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +141,8 @@ namespace BUEMS.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var a = _context.Roles.ToList();
+            ViewBag.Name = _context.Roles.ToList();
             return View();
         }
 
@@ -151,10 +155,11 @@ namespace BUEMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.FullName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await this.UserManager.AddToRoleAsync(user.Id, model.Name);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -167,8 +172,14 @@ namespace BUEMS.Controllers
                 }
                 AddErrors(result);
             }
+            else
+            {
+                ViewBag.Name = _context.Roles.ToList();
+                return View(model);
+            }
 
             // If we got this far, something failed, redisplay form
+            ViewBag.Name = _context.Roles.ToList();
             return View(model);
         }
 

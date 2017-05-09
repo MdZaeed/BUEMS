@@ -30,6 +30,18 @@ namespace BUEMS.Controllers
         {
             return RedirectToAction("QuickFixIndex",new { cat = "সকল"});
         }
+
+        public ActionResult GetEmployeesByDepartment(string dep)
+        {
+            if (dep.Equals("") || dep.Equals("সকল"))
+            {
+                return View(db.Employees.ToList());
+            }
+            else
+            {
+                return View(db.Employees.Where(i => i.Department.Equals(dep)).ToList());
+            }
+        }
     
 
         // GET: Employees/Details/5

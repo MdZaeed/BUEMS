@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using BUEMS.Models;
 using Newtonsoft.Json;
 
@@ -53,7 +55,6 @@ namespace BUEMS.Controllers
                 year = yearInt + "";
             }
 
-            string banglaMonth = "";
             var data=MonthMap.GetMonthData().Find(i => i.MonthNameInEnglish.Equals(month));
             var monthBangla = data.MonthNameInBangla;
             var yearBangla = LanguageConverter.EnglishToBangla(year);
@@ -76,21 +77,123 @@ namespace BUEMS.Controllers
 
         public ActionResult SalarySheetAng()
         {
-            List<Salary> salaries = new List<Salary>();
-            var employees = db.Employees.ToList();
-            foreach (Employee employee in employees)
+            var salaries = new List<Salary>();
+            var firstOrDefault
+                = db.SalaryHises.ToList().FirstOrDefault();
+            if (firstOrDefault != null)
             {
-                Salary salary = MapEmployeeToSalary(employee);
-                salaries.Add(salary);
+                var preData = firstOrDefault.Data;
+                if (preData.Equals(""))
+                {
+                    var employees = db.Employees.ToList();
+                    foreach (Employee employee in employees)
+                    {
+                        Salary salary = MapEmployeeToSalary(employee);
+                        salaries.Add(salary);
+                    }
+                    db.SalaryHises.Add(new SalaryHis{ Data = new JavaScriptSerializer().Serialize(Json(salaries))});
+                }
+                else
+                {
+                    salaries = JsonConvert.DeserializeObject<List<Salary>>(preData);
+                }
+                return Json(salaries, JsonRequestBehavior.AllowGet);
+            }
+                var preData2 = "";
+                    var employees2 = db.Employees.ToList();
+                    foreach (Employee employee in employees2)
+                    {
+                        Salary salary = MapEmployeeToSalary(employee);
+                        salaries.Add(salary);
+                    }
+            string json = new JavaScriptSerializer().Serialize(Json(salaries).Data);
+            SalaryHis sal = new SalaryHis {SerialNo = 1, Data = json};
+            try
+            {
+                db.SalaryHises.AddOrUpdate(i=>i.SerialNo,sal);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+       
+                string j=e.StackTrace;
             }
             return Json(salaries, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult IndividualSheetData(int id)
         {
-            var employee = db.Employees.Find(id);
-            Salary salary = MapEmployeeToSalary(employee);
-            return Json(salary, JsonRequestBehavior.AllowGet);
+            var salaries = new List<Salary>();
+            var firstOrDefault
+                = db.SalaryHises.ToList().FirstOrDefault();
+            if (firstOrDefault != null)
+            {
+                var preData = firstOrDefault.Data;
+                if (preData.Equals(""))
+                {
+                    var employees = db.Employees.ToList();
+                    foreach (Employee employee in employees)
+                    {
+                        Salary salary = MapEmployeeToSalary(employee);
+                        salaries.Add(salary);
+                    }
+                    db.SalaryHises.Add(new SalaryHis { Data = new JavaScriptSerializer().Serialize(Json(salaries)) });
+                }
+                else
+                {
+                    salaries = JsonConvert.DeserializeObject<List<Salary>>(preData);
+                }
+                Salary sa = salaries.Find(i => i.SerialNo == id);
+                return Json(sa, JsonRequestBehavior.AllowGet);
+            }
+            var preData2 = "";
+            var employees2 = db.Employees.ToList();
+            foreach (Employee employee in employees2)
+            {
+                Salary salary = MapEmployeeToSalary(employee);
+                salaries.Add(salary);
+            }
+            string json = new JavaScriptSerializer().Serialize(Json(salaries).Data);
+            SalaryHis sal = new SalaryHis { SerialNo = 1, Data = json };
+            try
+            {
+                db.SalaryHises.AddOrUpdate(i => i.SerialNo, sal);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+                string j = e.StackTrace;
+            }
+            Salary sa2 = salaries.Find(i => i.SerialNo == id);
+            return Json(sa2, JsonRequestBehavior.AllowGet);
+//            var employee = db.Employees.Find(id);
+//            Salary salary = MapEmployeeToSalary(employee);
+//            return Json(salary, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateAll(List<Salary> json)
+        {
+            List<Salary> newSalaries = UpdateSalaryList(json);
+            string newJson = JsonConvert.SerializeObject(newSalaries);
+            db.SalaryHises.AddOrUpdate(i => i.SerialNo, new SalaryHis { SerialNo = 1, Data = newJson });
+            db.SaveChanges();
+            return RedirectToAction("Salaries", "SalaryGen");
+        }
+
+        public ActionResult ShiftConfirmed()
+        {
+            var firstOrDefault = db.SalaryHises.ToList().FirstOrDefault();
+            if (firstOrDefault != null)
+            {
+                var json = firstOrDefault.Data;
+                var salaries = JsonConvert.DeserializeObject<List<Salary>>(json);
+                db.Salaries.AddRange(salaries);
+                db.SalaryHises.AddOrUpdate(i=>i.SerialNo,new SalaryHis{SerialNo = 1,Data = ""});
+                db.SaveChanges();
+            }
+            return RedirectToAction("Salaries","SalaryGen");
         }
 
         // GET: Salaries/Details/5
@@ -224,7 +327,7 @@ namespace BUEMS.Controllers
                 JoiningDate = employee.JoiningDate,
                 MainSalary = employee.Salary,
                 MedicalAllowance = SalaryGenrationHelper.GetMedicalBill(),
-                Month = "ফেব্রুয়ারি/২০১৭",
+                Month = SalaryGenrationHelper.GetMonth(),
                 Name = employee.FullName,
                 PayableMainSalary = employee.Salary,
                 ResearchAllowance = SalaryGenrationHelper.GetResearchAllowance(),

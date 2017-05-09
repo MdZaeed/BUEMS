@@ -6,113 +6,111 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BUEMS.CustomFilters;
 using BUEMS.Models;
 
 namespace BUEMS.Controllers
 {
-    public class DepartmentsController : Controller
+    public class SalaryHisController : Controller
     {
         private BUEMSDbContext db = new BUEMSDbContext();
 
-        // GET: Departments
-        [AuthLog(Roles = "V. C.")]
+        // GET: SalaryHis
         public ActionResult Index()
         {
-            return View(db.Departments.ToList());
+            return View(db.SalaryHises.ToList());
         }
 
-        // GET: Departments/Details/5
+        // GET: SalaryHis/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            SalaryHis salaryHis = db.SalaryHises.Find(id);
+            if (salaryHis == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(salaryHis);
         }
 
-        // GET: Departments/Create
+        // GET: SalaryHis/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Departments/Create
+        // POST: SalaryHis/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SerialNo,DepartmentName")] Department department)
+        public ActionResult Create([Bind(Include = "SerialNo,Data")] SalaryHis salaryHis)
         {
             if (ModelState.IsValid)
             {
-                db.Departments.Add(department);
+                db.SalaryHises.Add(salaryHis);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(department);
+            return View(salaryHis);
         }
 
-        // GET: Departments/Edit/5
+        // GET: SalaryHis/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            SalaryHis salaryHis = db.SalaryHises.Find(id);
+            if (salaryHis == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(salaryHis);
         }
 
-        // POST: Departments/Edit/5
+        // POST: SalaryHis/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SerialNo,DepartmentName")] Department department)
+        public ActionResult Edit([Bind(Include = "SerialNo,Data")] SalaryHis salaryHis)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
+                db.Entry(salaryHis).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(department);
+            return View(salaryHis);
         }
 
-        // GET: Departments/Delete/5
+        // GET: SalaryHis/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = db.Departments.Find(id);
-            if (department == null)
+            SalaryHis salaryHis = db.SalaryHises.Find(id);
+            if (salaryHis == null)
             {
                 return HttpNotFound();
             }
-            return View(department);
+            return View(salaryHis);
         }
 
-        // POST: Departments/Delete/5
+        // POST: SalaryHis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Department department = db.Departments.Find(id);
-            db.Departments.Remove(department);
+            SalaryHis salaryHis = db.SalaryHises.Find(id);
+            db.SalaryHises.Remove(salaryHis);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

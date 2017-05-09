@@ -15,5 +15,7 @@ namespace BUEMS.Models
         public DbSet<Title> Titles { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Allowance> Allowances { get; set; }
+        public DbSet<SalaryHis> SalaryHises { get; set; }
+
     }
 }

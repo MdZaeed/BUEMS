@@ -7,6 +7,15 @@ namespace BUEMS.Controllers
     public static class SalaryGenrationHelper
     {
         private static BUEMSDbContext _db;
+
+        public static string GetMonth()
+        {
+            var month = DateTime.Now.Month;
+            var year = DateTime.Now.Year;
+            var banglaMonth = MonthMap.GetMonthData()[month - 1].MonthNameInBangla;
+            var yearBangla = LanguageConverter.EnglishToBangla(year + "");
+            return banglaMonth + "/" + yearBangla;
+        }
         public static string GetAllowanceFromDb(string searchString)
         {
             _db=new BUEMSDbContext();

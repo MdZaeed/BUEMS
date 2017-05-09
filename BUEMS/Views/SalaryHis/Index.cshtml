@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BUEMS.Models.Department>
+﻿@model IEnumerable<BUEMS.Models.SalaryHis>
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DepartmentName)
+            @Html.DisplayNameFor(model => model.Data)
         </th>
         <th></th>
     </tr>
@@ -20,8 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @{ string link = "/Employees/GetEmployeesByDepartment?dep=" + @item.DepartmentName;
-            <a href="@link">@item.DepartmentName</a> }
+            @Html.DisplayFor(modelItem => item.Data)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SerialNo }) |
