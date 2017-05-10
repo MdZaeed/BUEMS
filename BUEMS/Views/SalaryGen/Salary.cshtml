@@ -6,19 +6,24 @@
 
 <div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
     <div class="container">
-        <a class="btn btn-info" href="/SalaryGen/All">Show All</a><br />
-    </div>
-    <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <a class="btn btn-primary" ng-click="previous()">Prev</a>
-                <a class="btn btn-primary" style="float:right" href="/SalaryGen/Individal/{{salary.SerialNo}}">Print</a>
+            <a class="btn button3" href="/SalaryGen/All">Show All</a><br/>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a class="btn button1" ng-click="previous()">Prev</a>
             </div>
-            <div class="col-md-6">
-                <a class="btn btn-info" ng-click="update()">Save</a>
-                <a class="btn btn-primary" style="float:right" ng-click="next()">Next</a>
+            <div class="col-md-3">
+                <a class="btn button1" style="float:right" href="/SalaryGen/Individal/{{salary.SerialNo}}">Print</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn button1" ng-click="update()">Save</a>
+            </div>
+            <div class="col-md-3">
+                <a class="btn button1" style="float:right" ng-click="next()">Next</a>
             </div>
         </div>
+        
     </div>
     <div class="container" style="overflow-y:scroll; margin-top:20px; max-height:600px">
         <div class="row">
