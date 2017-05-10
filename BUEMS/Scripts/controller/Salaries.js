@@ -1,4 +1,4 @@
-﻿var app = angular.module("service-app", []);
+﻿var app = angular.module("service-app", ['wj']);
 
 // define the app's single controller
 app.controller("appCtrl", ["$scope", "baseService",
@@ -19,14 +19,37 @@ app.controller("appCtrl", ["$scope", "baseService",
         month[11] = "December";
         $scope.selectedMonth = month[date.getMonth()];
         $scope.selectedYear = date.getFullYear();
+        $scope.thisMonthConfirmed = false;
+        var flag = 0;
         $scope.update = function (){
             baseService.get("/Salaries/NewIndex?month=" + $scope.selectedMonth + "&year=" + $scope.selectedYear).
                 then(function(response) {
                     $scope.salaries = response;
-
+                    if($scope.salaries.length!=0 && flag==0){
+                        $scope.thisMonthConfirmed = true;
+                        flag == 1;
+                    }
                 });
         }
 
         $scope.update();
+
+        $scope.print = function () {
+
+            // create document
+            var doc = new wijmo.PrintDocument({
+                title: "abcd"
+            });
+
+
+            // add content to it
+            var view = document.querySelector('#zoom');
+            for (var i = 0; i < view.children.length; i++) {
+                doc.append(view.children[i]);
+            }
+
+            // and print it
+            doc.print();
+        }
     }
 ]);

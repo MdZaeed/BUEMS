@@ -14,7 +14,14 @@ function ($scope, baseService) {
     $scope.update = function () {
         baseService.put($scope.salaries, "/Salaries/UpdateAll")
             .then(function (response) {
-                //alert("Updated");
+                alert("Updated successfully.");
+            });
+    }
+
+    $scope.confirm = function () {
+        baseService.get("/Salaries/ShiftConfirmed")
+            .then(function (response) {
+                window.location.href = "/SalaryGen/Salaries";
             });
     }
 

@@ -14,13 +14,16 @@ namespace BUEMS.Controllers
 
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public void Base()
+        {
             var title = _db.Titles.ToList();
             ViewBag.TitlesCom = title;
 
             var category = _db.Titles.Select(i => i.Category).Distinct();
             ViewBag.CategoriesCom = category;
-
-            return View();
         }
 
         public ActionResult About()
