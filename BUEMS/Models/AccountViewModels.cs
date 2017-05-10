@@ -49,8 +49,7 @@ namespace BUEMS.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "Username")]
         public string Email { get; set; }
 
         [Required]
@@ -80,7 +79,7 @@ namespace BUEMS.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         public string Name { get; set; }
-        [Display(Name = "Full Name")]
+        [Display(Name = "Username")]
         public string FullName { get; set; }
     }
 
