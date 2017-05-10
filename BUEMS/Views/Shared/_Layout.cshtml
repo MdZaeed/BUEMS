@@ -30,22 +30,88 @@
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse newnavst navbar-fixed-top">
             <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="~/Content/Images/logo.jpg" style="height: 60px; margin-top: 20px;" />
+                    </div>
+                    <div class="col-md-offset-1 col-md-4">
+                        <h1 style="color: white;">বরিশাল বিশ্ববিদ্যালয় </h1>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+
                 <div class="navbar-header">
+
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     @Html.ActionLink("BUEMS", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                    <ul class="navlist navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Employee Info <span class="caret"></span></a>
+                                <ul class="dropdown-menu submenudd">
+                                    <li class="dropdown-submenu">
+                                        <a class="test" href="#">কর্মকর্তা<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" style="margin-left:160px;top:10% !important">
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ট্রেজারার">ট্রেজারার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=রেজিস্টার">রেজিস্টার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=পরিচালক অর্থ ও হিসাব(চুক্তিভিত্তিক)">পরিচালক অর্থ ও হিসাব(চুক্তিভিত্তিক)</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=পরীক্ষা নিয়ন্ত্রক">পরীক্ষা নিয়ন্ত্রক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=উপ পরিচালক">উপ পরিচালক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=নির্বাহী প্রকৌশলী">নির্বাহী প্রকৌশলী</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=সহকারী রেজিস্টার">সহকারী রেজিস্টার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=উপ পরীক্ষা নিয়ন্ত্রক">উপ পরীক্ষা নিয়ন্ত্রক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=সেকশন অফিসার">সেকশন অফিসার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=সহকারী পরিচালক">সহকারী পরিচালক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=একাউন্টস অফিসার">একাউন্টস অফিসার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ফিজিক্যাল ইন্সট্র্যাক্টর">ফিজিক্যাল ইন্সট্র্যাক্টর</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=অ্যাসিস্ট্যান্ট প্রোগ্রামার">অ্যাসিস্ট্যান্ট প্রোগ্রামার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=আইটি ইঞ্জিনিয়ার">আইটি ইঞ্জিনিয়ার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=অডিট অ্যান্ড একাউন্টস অফিসার">অডিট অ্যান্ড একাউন্টস অফিসার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ভাইস-চ্যান্সেলর">ভাইস-চ্যান্সেলর</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="test" href="#">কর্মচারি<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" style="margin-left:160px;top:10% !important">
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ড্রাইভার">ড্রাইভার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ড্রাইভার">ড্রাইভার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=কেয়ার টেকার">কেয়ার টেকার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=কম্পিউটার অপারেটার">কম্পিউটার অপারেটার</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=ফটোগ্রাফার">ফটোগ্রাফার</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu">
+                                        <a class="test" href="#">শিক্ষক<span class="caret"></span></a>
+                                        <ul class="dropdown-menu" style="margin-left:160px;top:10% !important">
+                                            <li><a href="/Employees/QuickFIxIndex?cat=অধ্যাপক">অধ্যাপক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=সহকারী অধ্যাপক">সহকারী অধ্যাপক</a></li>
+                                            <li><a href="/Employees/QuickFIxIndex?cat=লেকচারার">লেকচারার</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/Employees/QuickFIxIndex?cat=">সকল</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>@Html.ActionLink("Salary Sheet", "Salaries", "SalaryGen")</li>
+                        <li>@Html.ActionLink("Department", "Index", "Departments")</li>
+                        <li>@Html.ActionLink("Title", "Index", "Titles")</li>
+                        <li>@Html.ActionLink("New Employee", "Create", "Employees")</li>
+                        <li>@Html.ActionLink("Allowances", "Index", "Allowances")</li>
+                    </ul>
                 </div>
                 <div class="navbar-collapse collapse">
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
-        <div class="container body-content">
+        <div class="container body-content" style="margin-top:100px">
             @RenderBody()
             <hr />
             <footer>

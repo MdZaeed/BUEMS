@@ -17,9 +17,9 @@ function ($scope, baseService) {
     });
 
     $scope.update = function () {
-        baseService.put($scope.salary, "/Salaries/UpdateIndividual/")
+        baseService.put($scope.salaries, "/Salaries/UpdateAll/")
             .then(function (response) {
-                //alert("Updated");
+                alert("Updated");
             });
     }
     $scope.next = function () {

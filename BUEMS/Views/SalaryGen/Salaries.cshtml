@@ -3,10 +3,13 @@
 }
 
 <script src="~/Scripts/angular.min.js"></script>
-
+<link href="~/Scripts/wijmo.min.css" rel="stylesheet" />
+<script src="~/Scripts/wijmo.min.js"></script>
+<script src="~/Scripts/wijmo.input.min.js"></script>
+<script src="~/Scripts/wijmo.angular.min.js"></script>
 <div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
     <div class="container">
-        <a class="btn btn-info" href="/SalaryGen/Salary">Edit Salary Sheet</a>
+        <a class="btn btn-info" ng-hide="thisMonthsConfirmed" href="/SalaryGen/Salary">Edit Salary Sheet</a>
     </div>
     <div class="container">
         <a class="btn btn-info" href="/Salaries/SalarySheet">Generate Salary Sheet</a>
@@ -33,7 +36,8 @@
                     <option value='2016'>2016</option>
                     <option value='2017'>2017</option>
                 </select>
-                <a class="btn" ng-click="update()">Show</a>
+                <a class="btn btn-info" ng-click="update()">Show</a>
+                <a class="btn btn-info" ng-click="print()">Print This</a>
             </div>
             <div class="col-md-4"><input type="text" style="float:right" placeholder="Search" ng-model="search" /></div>
         </div>
@@ -59,10 +63,133 @@
         </div>
 
     </div>
-
+    <div >
+        <div id="zoom">
+            <div class="row">
+                <div class="col-md-4 col-xs-4">
+                    <img src="~/Content/Images/logo.jpg" class="bulogo">
+                </div>
+                <div class="col-md-4 col-xs-4 offnam" style="text-align: center;">
+                    <h4>অর্থ ও হিসাব পরিচালকের অফিস</h4>
+                    <h5>বরিশাল বিশ্ববিদ্যালয়, বরিশাল </h5>
+                    <h5>বিষয়: বেতন ও ভাতাদি</h5>
+                    <h5>মাসের নাম: {{selectedMonth}} /২০১৭</h5>
+                </div>
+                <div class="col-md-3 col-xs-3 offbv">
+                    <h4 style="text-align: center">বাড়ী ভাড়া </h4>
+                    <h6>মূল বেতন ৯৭০০/- টাকা পর্যন্ত ৫৫% সর্বনিম্ন ৫০০০/-</h6>
+                    <h6>মূল বেতন ৯৭০১-১৬০০০ টাকা পর্যন্ত ৫০% সর্বনিম্ন ৫৪০০/-</h6>
+                    <h6>মূল বেতন ১৬০০১-৩৫৫০০ টাকা পর্যন্ত ৪৫% সর্বনিম্ন ৮০০০/-</h6>
+                    <h6>মূল বেতন ৩৫৫০১ টাকা তদূর্ধ্ব  ৪০% সর্বনিম্ন ১৬০০০/-</h6>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead class="tablehs">
+                            <tr>
+                                <th rowspan="2">আইডি নং</th>
+                                <th rowspan="2">নাম</th>
+                                <th rowspan="2">পদবী</th>
+                                <th rowspan="2">যোগদানের তারিখ</th>
+                                <th rowspan="2">মূল বেতন</th>
+                                <th rowspan="2">প্রাপ্য মূল বেতন</th>
+                                <th rowspan="2">বাড়ি ভাড়া</th>
+                                <th rowspan="2">চিকিৎসা ভাতা</th>
+                                <th rowspan="2">শিক্ষা সহায়ক ভাতা</th>
+                                <th rowspan="2">প্রক্টর/সহকারী প্রক্টর</th>
+                                <th rowspan="2">বই ভাতা</th>
+                                <th rowspan="2">ডিন/চেয়ারম্যান/প্রাধ্যক্ষ ভাতা</th>
+                                <th rowspan="2">অ:দা:/শিক্ষার্থী উপদেষ্টা</th>
+                                <th rowspan="2">গবেষণা ভাতা</th>
+                                <th rowspan="2">টেলিফোন ভাতা</th>
+                                <th rowspan="2">সমন্বয়</th>
+                                <th rowspan="2">সর্বমোট</th>
+                                <th colspan="4">কর্তন</th>
+                                <th rowspan="2">রেভিনিউ স্ট্যাম্প</th>
+                                <th rowspan="2">মোট কর্তন</th>
+                                <th rowspan="2">নীট বেতন ভাতা</th>
+                            </tr>
+                            <tr>
+                                <th>জিপিএফ</th>
+                                <th>বিএফ</th>
+                                <th>পরিবহন</th>
+                                <th>আয়কর</th>
+                            </tr>
+                        </thead>
+                        <tbody class="ahammok">
+                            <tr>
+                                <td colspan="24">শিক্ষক </td>
+                            </tr>
+                            <tr ng-repeat="salary in salaries">
+                                <td>{{salary.AccountNo}}</td>
+                                <td>{{salary.Name}}</td>
+                                <td>{{salary.Title}} ({{salary.Institute}})</td>
+                                <td>{{salary.JoiningDate}}</td>
+                                <td>{{salary.MainSalary}}</td>
+                                <td>{{salary.PayableMainSalary}}</td>
+                                <td>{{salary.HouseRent}}</td>
+                                <td>{{salary.MedicalAllowance}}</td>
+                                <td>{{salary.CurriculumAssitanceAllowance}}</td>
+                                <td>০</td>
+                                <td>{{salary.AssistantProctorAllowance}}</td>
+                                <td>{{salary.DeanAllowance}}</td>
+                                <td>{{salary.AdditionalDutiesAllowance}}</td>
+                                <td>{{salary.ResearchAllowance}}</td>
+                                <td>{{salary.TelephoneAllowance}}</td>
+                                <td>{{salary.Somonnoy}}</td>
+                                <td>{{salary.Total}}</td>
+                                <td>{{salary.GPF}}</td>
+                                <td>{{salary.BF}}</td>
+                                <td>{{salary.TransportationAllowance}}</td>
+                                <td>{{salary.IncomeTax}}</td>
+                                <td>{{salary.RevenueStamp}}</td>
+                                <td>{{salary.TotalSubtraction}}</td>
+                                <td>{{salary.NeatSalary}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="~/Scripts/controller/Salaries.js"></script>
     <script src="~/Scripts/service/baseService.js"></script>
 </div>
+<style>
+    h2 {
+	    text-align: center !important;
+    }
+
+    .tablehs tr th {
+        font-size: 8px;
+    }
+
+    .ahammok tr td {
+        font-size: 8px;
+    }
+
+    .bulogo {
+      height: 80px;
+        float: right;
+        margin-right: 10%;
+    }
+
+    .offnam h4, h5 {
+      margin-top: 6px !important;
+      margin-bottom: 0px !important;
+    }
+
+    .offbv h4, h6 {
+      margin-top: 3px !important;
+      margin-bottom: 3px !important;
+    }
+    .offbv {
+      border: 1px solid;
+    }
+
+    .offbv h6 {
+      font-size: 10px !important;
+    }
+</style>
 
 
 
