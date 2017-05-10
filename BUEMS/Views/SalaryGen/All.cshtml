@@ -7,13 +7,25 @@
 
 <div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
     <div class="container">
-        <a class="btn btn-info" href="/SalaryGen/Salary">Back to individual view</a>
-        <a class="btn btn-info" ng-click="confirm()">Confirm All</a><br />
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="barkat">
+                    <li><a class="btn button1" href="/SalaryGen/Salary">Back to individual view</a></li>
+                    <li><a class="btn button1" ng-click="confirm()">Confirm All</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <a class="btn button1" ng-click="update()">Update</a>
+            </div>
+            <div class="col-md-6">
+                <input type="text" style="float: right" class="sbt" ng-model="search"/>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6"><a class="btn btn-info" ng-click="update()">Update</a></div>
-            <div class="col-md-6"><input type="text" style="float:right" ng-model="search" /></div>
+            
+            
         </div>
     </div>
     <div class="container" style="overflow:scroll; margin-top:20px; max-height:1000px">
