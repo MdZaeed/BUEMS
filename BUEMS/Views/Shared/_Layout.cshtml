@@ -31,16 +31,14 @@
     </head>
     <body>
         <div class="navbar navbar-inverse newnavst navbar-fixed-top">
-            <div class="container">
-                
+            <div class="container">                
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                         <img src="~/Content/Images/logo.jpg" style="height: 60px; margin-top: 20px;" />
                     </div>
-                    <div class="col-md-offset-1 col-md-4">
-                        <h1 style="color: white;">বরিশাল বিশ্ববিদ্যালয় </h1>
+                    <div class="col-md-11">
+                        <h1 style="color: white; font-size: 50px;">বরিশাল বিশ্ববিদ্যালয় </h1>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
 
                 <div class="navbar-header">
@@ -50,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("BUEMS", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                   @* @Html.ActionLink("BUEMS", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})*@
                     <ul class="navlist navbar-nav navbar-left">
                         <li class="dropdown">
                             <div class="dropdown">
@@ -111,13 +109,18 @@
                 </div>
             </div>
         </div>
-        <div class="container body-content" style="margin-top:100px">
+        <div class="container body-content" style="margin-top: 100px; min-height: 460px;">
             @RenderBody()
             <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - BUEMS</p>
-            </footer>
+            
         </div>
+        
+            <footer class="footerl">
+                <div class="container">
+                    <p>&copy; @DateTime.Now.Year-Barisal University, All Right Reserved</p>
+                </div>
+            </footer>
+        
     
         <script>
             $(document).ready(function() {

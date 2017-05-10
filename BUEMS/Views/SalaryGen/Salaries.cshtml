@@ -9,40 +9,56 @@
 <script src="~/Scripts/wijmo.angular.min.js"></script>
 <div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
     <div class="container">
-        <a class="btn btn-info" ng-hide="thisMonthsConfirmed" href="/SalaryGen/Salary">Edit Salary Sheet</a>
-    </div>
-    <div class="container">
-        <a class="btn btn-info" href="/Salaries/SalarySheet">Generate Salary Sheet</a>
-    </div>
-    <div class="container">
         <div class="row">
-            <div class="col-md-8">Select Month 
-                <select ng-model="selectedMonth">
-                    <option value='January'>Janaury</option>
-                    <option value='February'>February</option>
-                    <option value='March'>March</option>
-                    <option value='April'>April</option>
-                    <option value='May'>May</option>
-                    <option value='June'>June</option>
-                    <option value='July'>July</option>
-                    <option value='August'>August</option>
-                    <option value='September'>September</option>
-                    <option value='October'>October</option>
-                    <option value='November'>November</option>
-                    <option value='December'>December</option>
-                </select>
-                Select Year
-                <select ng-model="selectedYear">
-                    <option value='2016'>2016</option>
-                    <option value='2017'>2017</option>
-                </select>
-                <a class="btn btn-info" ng-click="update()">Show</a>
-                <a class="btn btn-info" ng-click="print()">Print This</a>
+            <div class="col-md-8">
+                <ul class="barkat">
+                    <li><a class="btn button1 " ng-hide="thisMonthsConfirmed" href="/SalaryGen/Salary">Edit Salary Sheet</a></li>
+                    <li><a class="btn button1" href="/Salaries/SalarySheet">Generate Salary Sheet</a></li>
+                </ul>
             </div>
-            <div class="col-md-4"><input type="text" style="float:right" placeholder="Search" ng-model="search" /></div>
+            <div class="col-md-4">
+                <input type="text" class="sbt" placeholder="Search" ng-model="search"/>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px; margin-bottom: 30px;">
+            <div class="col-md-8">
+                <div class="col-md-2">
+                    <span>Select Month</span>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-model="selectedMonth">
+                        <option value='January'>Janaury</option>
+                        <option value='February'>February</option>
+                        <option value='March'>March</option>
+                        <option value='April'>April</option>
+                        <option value='May'>May</option>
+                        <option value='June'>June</option>
+                        <option value='July'>July</option>
+                        <option value='August'>August</option>
+                        <option value='September'>September</option>
+                        <option value='October'>October</option>
+                        <option value='November'>November</option>
+                        <option value='December'>December</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <span>Select Year</span>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-model="selectedYear">
+                        <option value='2016'>2016</option>
+                        <option value='2017'>2017</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a class="btn button1" ng-click="update()">Show</a>
+                <a class="btn button1" ng-click="print()">Print This</a>  
+            </div>
         </div>
     </div>
-    <div class="container" style="overflow:scroll; margin-top:20px; max-height:1000px">
+
+    <div class="container">
         <div class="row">
             <table class="table table-bordered">
                 <thead>
@@ -80,8 +96,10 @@
                     <h6>মূল বেতন ৯৭০০/- টাকা পর্যন্ত ৫৫% সর্বনিম্ন ৫০০০/-</h6>
                     <h6>মূল বেতন ৯৭০১-১৬০০০ টাকা পর্যন্ত ৫০% সর্বনিম্ন ৫৪০০/-</h6>
                     <h6>মূল বেতন ১৬০০১-৩৫৫০০ টাকা পর্যন্ত ৪৫% সর্বনিম্ন ৮০০০/-</h6>
-                    <h6>মূল বেতন ৩৫৫০১ টাকা তদূর্ধ্ব  ৪০% সর্বনিম্ন ১৬০০০/-</h6>
+                    <h6>মূল বেতন ৩৫৫০১ টাকা তদূর্ধ্ব ৪০% সর্বনিম্ন ১৬০০০/-</h6>
                 </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <thead class="tablehs">
@@ -148,6 +166,8 @@
                         </tbody>
                     </table>
                 </div>
+            </div>               
+                
             </div>
         </div>
     </div>
