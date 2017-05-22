@@ -17,8 +17,70 @@
             <div class="col-md-6">
                 <a class="btn button1" ng-click="update()">Update</a>
             </div>
-            <div class="col-md-6">
-                <input type="text" style="float: right" class="sbt" ng-model="search"/>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-4 spandn">
+                    <span>পদবী</span>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="selectedTitle">
+                        <option value="অধ্যাপক">অধ্যাপক</option>
+                        <option value="সহকারী অধ্যাপক">সহকারী অধ্যাপক</option>
+                        <option value="লেকচারার">লেকচারার</option>
+                        <option value="ট্রেজারার">ট্রেজারার</option>
+                        <option value="রেজিস্টার">রেজিস্টার</option>
+                        <option value="পরিচালক অর্থ ও হিসাব(চুক্তিভিত্তিক)">পরিচালক অর্থ ও হিসাব(চুক্তিভিত্তিক)</option>
+                        <option value="পরীক্ষা নিয়ন্ত্রক">পরীক্ষা নিয়ন্ত্রক</option>
+                        <option value="উপ পরিচালক">উপ পরিচালক</option>
+                        <option value="নির্বাহী প্রকৌশলী">নির্বাহী প্রকৌশলী</option>
+                        <option value="সহকারী রেজিস্টার">সহকারী রেজিস্টার</option>
+                        <option value="উপ পরীক্ষা নিয়ন্ত্রক">উপ পরীক্ষা নিয়ন্ত্রক</option>
+                        <option value="সেকশন অফিসার">সেকশন অফিসার</option>
+                        <option value="সহকারী পরিচালক">সহকারী পরিচালক</option>
+                        <option value="একাউন্টস অফিসার">একাউন্টস অফিসার</option>
+                        <option value="ফিজিক্যাল ইন্সট্র্যাক্টর">ফিজিক্যাল ইন্সট্র্যাক্টর</option>
+                        <option value="অ্যাসিস্ট্যান্ট প্রোগ্রামার">অ্যাসিস্ট্যান্ট প্রোগ্রামার</option>
+                        <option value="আইটি ইঞ্জিনিয়ার">আইটি ইঞ্জিনিয়ার</option>
+                        <option value="অডিট অ্যান্ড একাউন্টস অফিসার">অডিট অ্যান্ড একাউন্টস অফিসার</option>
+                        <option value="ভাইস-চ্যান্সেলর">ভাইস-চ্যান্সেলর</option>
+                        <option value="ড্রাইভার">ড্রাইভার</option>
+                        <option value="ড্রাইভার">ড্রাইভার</option>
+                        <option value="কেয়ার টেকার">কেয়ার টেকার</option>
+                        <option value="কম্পিউটার অপারেটার">কম্পিউটার অপারেটার</option>
+                        <option value="ফটোগ্রাফার">ফটোগ্রাফার</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4 spandn">
+                    <span>ডিপার্টমেন্ট</span>
+                </div>
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="selectedDepartment">
+                        <option value="ইংরেজি">ইংরেজি</option>
+                        <option value="গণিত">গণিত</option>
+                        <option value="সমাজবিজ্ঞান">সমাজবিজ্ঞান</option>
+                        <option value="অর্থনীতি">অর্থনীতি</option>
+                        <option value="মার্কেটিং">মার্কেটিং</option>
+                        <option value="সয়েল সায়েন্স">সয়েল সায়েন্স</option>
+                        <option value="লোক প্রশাসন">লোক প্রশাসন</option>
+                        <option value="এআইএস">এআইএস</option>
+                        <option value="বাংলা">বাংলা</option>
+                        <option value="ম্যানেজমেন্ট">ম্যানেজমেন্ট</option>
+                        <option value="ফাইনান্স অ্যান্ড ব্যাংকিং">ফাইনান্স অ্যান্ড ব্যাংকিং</option>
+                        <option value="আইন">আইন</option>
+                        <option value="রসায়ণ">রসায়ণ</option>
+                        <option value="উদ্ভিদ বিজ্ঞান">উদ্ভিদ বিজ্ঞান</option>
+                        <option value="জিওলজি">জিওলজি</option>
+                        <option value="পদাথ বিজ্ঞান">পদাথ বিজ্ঞান</option>
+                        <option value="দর্শন">দর্শন</option>
+                        <option value="কম্পিউটার সায়েন্স">কম্পিউটার সায়েন্স</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="sbt" placeholder="Search" ng-model="search" />
             </div>
         </div>
     </div>
@@ -39,7 +101,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="salary in salaries | filter: search">
+                    <tr ng-repeat="salary in salaries | filter: search | filter: {Institute: selectedDepartment} : true | filter:{Title: selectedTitle} :true">
                         <td ng-repeat="(key, value) in salary">
                             <input ng-model="salary[key]">
                         </td>

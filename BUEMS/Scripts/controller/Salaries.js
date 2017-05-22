@@ -32,6 +32,19 @@ app.controller("appCtrl", ["$scope", "baseService",
                 });
         }
 
+        $scope.update2 = function () {
+            var from = month.indexOf($scope.fromMonth);
+            var to = month.indexOf($scope.toMonth);
+            $scope.salaries = [];
+            for (var i = from; i <= to; i++) {
+                baseService.get("/Salaries/NewIndex?month=" + month[i] + "&year=" + $scope.selectedYear).
+                then(function (response) {
+                    $scope.salaries=$scope.salaries.concat(response);
+                });
+            }
+            
+        }
+
         $scope.update();
 
         $scope.print = function () {

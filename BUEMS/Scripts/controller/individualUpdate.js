@@ -22,6 +22,10 @@ function ($scope, baseService) {
                 alert("Updated");
             });
     }
+    $scope.selected = function () {
+
+    }
+
     $scope.next = function () {
         index++;
         if (index == length) {

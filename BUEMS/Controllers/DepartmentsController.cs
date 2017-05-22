@@ -16,7 +16,7 @@ namespace BUEMS.Controllers
         private BUEMSDbContext db = new BUEMSDbContext();
 
         // GET: Departments
-        [AuthLog(Roles = "V.C.")]
+        [AuthLog(Roles = "VC,Treasurer")]
         public ActionResult Index()
         {
             return View(db.Departments.ToList());

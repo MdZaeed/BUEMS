@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUEMS.CustomFilters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -21,6 +22,7 @@ namespace BUEMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             return View();
         }
 
@@ -29,11 +31,13 @@ namespace BUEMS.Controllers
             return View();
         }
 
+        [AuthLog(Roles = "VC,Treasurer,Accoutant")]
         public ActionResult Salaries()
         {
             return View();
         }
 
+        [AuthLog(Roles = "VC,Treasurer,Accoutant")]
         public ActionResult Salary()
         {
             return View();

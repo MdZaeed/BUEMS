@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BUEMS.Models;
+using BUEMS.CustomFilters;
 
 namespace BUEMS.Controllers
 {
@@ -15,6 +16,7 @@ namespace BUEMS.Controllers
         private BUEMSDbContext db = new BUEMSDbContext();
 
         // GET: Employees
+        [AuthLog(Roles = "VC,Treasurer,Acountant")]
         public ActionResult QuickFixIndex(string cat)
         {
             if (cat.Equals("") || cat.Equals("সকল"))
@@ -60,6 +62,7 @@ namespace BUEMS.Controllers
         }
 
         // GET: Employees/Create
+        [AuthLog(Roles = "Accountant")]
         public ActionResult Create()
         {
             var grades = db.Grades.ToList();

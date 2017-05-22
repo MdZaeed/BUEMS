@@ -8,6 +8,14 @@
     <div class="container">
         <div class="row">
             <a class="btn button3" href="/SalaryGen/All">Show All</a><br/>
+            <div class="col-md-2 spandn">
+                <span>Select Employee</span>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" ng-change="selected()" ng-model="selectedEmployee">
+                    <option ng-repeat="salary in salaries" value="salary">{{salary.Name}} ({{salary.IdNo}})</option>
+                </select>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-3">
