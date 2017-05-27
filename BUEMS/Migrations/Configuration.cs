@@ -54,6 +54,9 @@
                 new Title { SerialNo = 23, TitleName = "কম্পিউটার অপারেটার", Category = "কর্মচারি" },
                 new Title { SerialNo = 24, TitleName = "ফটোগ্রাফার", Category = "কর্মচারি" });
 
+            context.SalaryHises.AddOrUpdate(i=>i.SerialNo,
+                new SalaryHis{ SerialNo = 1, Data = ""});
+
             context.Departments.AddOrUpdate(i => i.SerialNo,
                 new Department { SerialNo = 1, DepartmentName = "ইংরেজি" },
                 new Department { SerialNo = 2, DepartmentName = "গণিত" },
@@ -506,6 +509,8 @@
                     Total = "৮৬৯০০",
                     TotalSubtraction = "৮৯৩৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -556,6 +561,8 @@
                     Total = "৬৪৮৫৪",
                     TotalSubtraction = "৮৯৩৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -606,6 +613,8 @@
                     Total = "৮৬৯০০",
                     TotalSubtraction = "৮৯৩৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -656,6 +665,8 @@
                     Total = "৬৪৮৫৪",
                     TotalSubtraction = "৮৯৩৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -706,6 +717,8 @@
                     Total = "৮৬৯০০",
                     TotalSubtraction = "৮৯৩৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -756,6 +769,8 @@
                     Total = "৬৪৮৫৪",
                     TotalSubtraction = "৫৩২৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
                 new Salary
                 {
@@ -805,6 +820,8 @@
                     Total = "৬৬৪৫৪",
                     TotalSubtraction = "৫৩২৪",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 },
 
                 new Salary
@@ -855,6 +872,8 @@
                     Total = "৩৮২৯৫",
                     TotalSubtraction = "৩০০১",
                     TransportationAllowance = "২০০",
+                    SrantiBinodonAllowance = "০",
+                    BoisakhiAllowance = "০",
                 });
         }
     }

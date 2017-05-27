@@ -104,6 +104,10 @@ namespace BUEMS.Models
         public string NeatSalary { get; set; }
         [Display(Name = "উৎসব ভাতা")]
         public string FestivalAllowance { get; set; }
+        [Display(Name = "শ্রান্তি বিনোদন ভাতা")]
+        public string SrantiBinodonAllowance { get; set; }
+        [Display(Name = "বৈশাখী ভাতা")]
+        public string BoisakhiAllowance { get; set; }
 
     }
 }

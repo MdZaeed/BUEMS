@@ -20,6 +20,11 @@ namespace BUEMS.Controllers
             return View(db.Titles.ToList());
         }
 
+        public ActionResult GetTitleByCategory(string cat)
+        {
+            var titles = db.Titles.Where(i => i.Category.Equals(cat)).ToList();
+            return Json(titles, JsonRequestBehavior.AllowGet);
+        }
         // GET: Titles/Details/5
         public ActionResult Details(int? id)
         {

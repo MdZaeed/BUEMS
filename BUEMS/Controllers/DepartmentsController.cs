@@ -22,6 +22,11 @@ namespace BUEMS.Controllers
             return View(db.Departments.ToList());
         }
 
+        public ActionResult IndexJson()
+        {
+            return Json(db.Departments.ToList(),JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Departments/Details/5
         public ActionResult Details(int? id)
         {

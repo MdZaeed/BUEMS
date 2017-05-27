@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201705082139386_Teporary Introduced.Designer.cs">
       <DependentUpon>201705082139386_Teporary Introduced.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705271707519_Sranti and Boisakhi.cs" />
+    <Compile Include="Migrations\201705271707519_Sranti and Boisakhi.Designer.cs">
+      <DependentUpon>201705271707519_Sranti and Boisakhi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allowance.cs" />
@@ -459,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705082139386_Teporary Introduced.resx">
       <DependentUpon>201705082139386_Teporary Introduced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705271707519_Sranti and Boisakhi.resx">
+      <DependentUpon>201705271707519_Sranti and Boisakhi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

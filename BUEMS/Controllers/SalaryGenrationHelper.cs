@@ -211,6 +211,24 @@ namespace BUEMS.Controllers
             }
         }
 
+        public static string GetBoisakhiAllowance(int mainSalary)
+        {
+
+            if (AllownceCheck.BoisakhiBonus)
+            {
+                return LanguageConverter.EnglishToBangla((int)(mainSalary * .25) + "");
+            }
+            else
+            {
+                return "০";
+            }
+        }
+
+        public static string GetSrantiAllowance()
+        {
+            return "০";
+        }
+
         public static string GetGasBill()
         {
             return GetAllowanceFromDb("গ্যাস বিল");
@@ -262,7 +280,11 @@ namespace BUEMS.Controllers
                 + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.AdditionalDutiesAllowance))
                 + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.ResearchAllowance))
                 + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.TelephoneAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.Somonnoy));
+                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.Somonnoy))
+                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.FestivalAllowance))
+                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.BoisakhiAllowance))
+                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.SrantiBinodonAllowance));
+            
             return LanguageConverter.EnglishToBangla(grandTotal + "");
         }
 

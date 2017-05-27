@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using BUEMS.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BUEMS.Controllers
 {
@@ -18,6 +19,22 @@ namespace BUEMS.Controllers
         public BUEMSDbContext db = new BUEMSDbContext();
 
         public static AllownceCheck AllowanceCheck;
+
+        public ActionResult IsSalaryGenerated()
+        {
+            var firstOrDefault1
+                = db.SalaryHises.ToList().FirstOrDefault();
+            if (firstOrDefault1 != null)
+            {
+                var preData1 = firstOrDefault1.Data;
+                if (!preData1.Equals(""))
+                {
+                    return Json(true,JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(false,JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AllowanceConfirm()
         {
             return View();
@@ -108,10 +125,13 @@ namespace BUEMS.Controllers
                         Salary salary = MapEmployeeToSalary(employee);
                         salaries.Add(salary);
                     }
-                    db.SalaryHises.Add(new SalaryHis{ Data = new JavaScriptSerializer().Serialize(Json(salaries))});
+                        db.SalaryHises.AddOrUpdate(i => i.SerialNo, new SalaryHis { SerialNo = 1, Data = JsonConvert.SerializeObject(salaries) });
+                        db.SaveChanges();
                 }
                 else
                 {
+/*                    var obj = JObject.Parse(preData);
+                    var url = obj["Data"];*/
                     salaries = JsonConvert.DeserializeObject<List<Salary>>(preData);
                 }
                 return Json(salaries, JsonRequestBehavior.AllowGet);
@@ -154,7 +174,7 @@ namespace BUEMS.Controllers
                         Salary salary = MapEmployeeToSalary(employee);
                         salaries.Add(salary);
                     }
-                    db.SalaryHises.Add(new SalaryHis { Data = new JavaScriptSerializer().Serialize(Json(salaries)) });
+                    db.SalaryHises.AddOrUpdate(new SalaryHis { Data = new JavaScriptSerializer().Serialize(Json(salaries)) });
                 }
                 else
                 {
@@ -372,7 +392,9 @@ namespace BUEMS.Controllers
                 FutureFund = "",
                 Grade = "",
                 OthersAddition = "",
-                AssistantProvostAllowance = ""
+                AssistantProvostAllowance = "",
+                BoisakhiAllowance = SalaryGenrationHelper.GetBoisakhiAllowance(employee.Salary),
+                SrantiBinodonAllowance = SalaryGenrationHelper.GetSrantiAllowance()
             };
             salary.Total = SalaryGenrationHelper.GetGrandTotal(salary);
             salary.TotalSubtraction = SalaryGenrationHelper.GetTotalSubtraction(salary);
