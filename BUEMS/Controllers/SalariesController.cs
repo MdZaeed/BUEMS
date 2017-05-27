@@ -15,7 +15,24 @@ namespace BUEMS.Controllers
 {
     public class SalariesController : Controller
     {
-        private BUEMSDbContext db = new BUEMSDbContext();
+        public BUEMSDbContext db = new BUEMSDbContext();
+
+        public static AllownceCheck AllowanceCheck;
+        public ActionResult AllowanceConfirm()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AllowanceConfirm([Bind(Include = "FestivalBonus,BoisakhiBonus")] AllownceCheck allownceCheck)
+        {
+            if (ModelState.IsValid)
+            {
+                SalaryGenrationHelper.AllownceCheck = allownceCheck;
+                return RedirectToAction("Salary","SalaryGen");
+            }
+            return View(allownceCheck);
+        }
 
         // GET: Salaries
         public ActionResult Index()
@@ -340,7 +357,7 @@ namespace BUEMS.Controllers
                 ChairmanAllowance = SalaryGenrationHelper.GetChairmanAllowance(employee.IsChairman),
                 Club = SalaryGenrationHelper.GetClubAllowance(),
                 DevelopmentFund = SalaryGenrationHelper.GetDevelopmentFund(),
-                FestivalAllowance = SalaryGenrationHelper.GetFestivalAllowance(),
+                FestivalAllowance = SalaryGenrationHelper.GetFestivalAllowance(employee.Salary),
                 GasBill = SalaryGenrationHelper.GetGasBill(),
                 GroupInsurance = SalaryGenrationHelper.GetGroupInsurance(),
                 HouseRentSub = SalaryGenrationHelper.GetHouseRentSub(),

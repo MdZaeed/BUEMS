@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
 using BUEMS.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace BUEMS.Controllers
 {
     public static class SalaryGenrationHelper
     {
         private static BUEMSDbContext _db;
+
+        public static AllownceCheck AllownceCheck;
 
         public static string GetMonth()
         {
@@ -195,9 +198,17 @@ namespace BUEMS.Controllers
             return GetAllowanceFromDb("কল্যাণ ফান্ড");
         }
 
-        public static string GetFestivalAllowance()
+        public static string GetFestivalAllowance(int mainSalary)
         {
-            return GetAllowanceFromDb("উৎসব ভাতা");
+            
+            if (AllownceCheck.FestivalBonus)
+            {
+                return LanguageConverter.EnglishToBangla(mainSalary + "");
+            }
+            else
+            {
+                return "০";
+            }
         }
 
         public static string GetGasBill()
