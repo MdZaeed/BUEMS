@@ -7,14 +7,36 @@
 <div ng-app="service-app" ng-controller="appCtrl" style="margin-top:50px">
     <div class="container">
         <div class="row">
-            <a class="btn button3" href="/SalaryGen/All">Show All</a><br/>
-            <div class="col-md-2 spandn">
-                <span>Select Employee</span>
+            <a class="btn button3" href="/SalaryGen/All">Show All</a><br />
+            <div class="row">
+                <div class="col-md-2 spandn">
+                    <span>Select Category</span>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-change="getCategoryTitles()" ng-model="selectedCategory">
+                        <option ng-repeat="cat in categories" value="{{cat}}">{{cat}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-md-4">
-                <select class="form-control" ng-change="selected()" ng-model="selectedEmployee">
-                    <option ng-repeat="salary in salaries" value="salary">{{salary.Name}} ({{salary.IdNo}})</option>
-                </select>
+            <div class="row">
+                <div class="col-md-2 spandn">
+                    <span>Select Title</span>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-change="selectTitle()" ng-model="selectedTitle">
+                        <option ng-repeat="title in titles" value="{{title.TitleName}}">{{title.TitleName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row" ng-hide="selectedCategory!=categories[0]">
+                <div class="col-md-2 spandn">
+                    <span>Select Department</span>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-control" ng-change="selectDept()" ng-model="selectedDept">
+                        <option ng-repeat="dept in depts" value="{{dept.DepartmentName}}">{{dept.DepartmentName}}</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -33,12 +55,206 @@
         </div>
         
     </div>
-    <div class="container" style="overflow-y:scroll; margin-top:20px; max-height:600px">
+    <div class="container" ng-show="showEditTable" style="overflow-y:scroll; margin-top:20px; max-height:600px">
         <div class="row">
             <table class="table table-bordered">
-                <tr ng-repeat="(key, value) in salary">
-                    <td>{{key}}</td>
-                    <td><input ng-model="salary[key]" class="form-control"/></td>
+                <tr>
+                    <td>IdNo</td>
+                    <td>{{salary.IdNo}}</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{salary.Name}}</td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td>{{salary.Title}}</td>
+                </tr>
+                <tr>
+                    <td>Institute</td>
+                    <td>{{salary.Institute}}</td>
+                </tr>
+                <tr>
+                    <td>JoiningDate</td>
+                    <td>{{salary.JoiningDate}}</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>{{salary.Month}}</td>
+                </tr>
+                <tr>
+                    <td>AccountNo</td>
+                    <td>{{salary.AccountNo}}</td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td>{{salary.Grade}}</td>
+                </tr>
+                <tr>
+                    <td>MainSalary</td>
+                    <td>{{salary.MainSalary}}</td>
+                </tr>
+                <tr>
+                    <td>PayableMainSalary</td>
+                    <td><input ng-model="salary.PayableMainSalary" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>HouseRent</td>
+                    <td><input ng-model="salary.HouseRent" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>MoharghoAlloowance</td>
+                    <td><input ng-model="salary.MoharghoAlloowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>MedicalAllowance</td>
+                    <td><input ng-model="salary.MedicalAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>TelephoneAllowance</td>
+                    <td>
+                        <input ng-model="salary.TelephoneAllowance" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CurriculumAssitanceAllowance</td>
+                    <td>
+                        <input ng-model="salary.CurriculumAssitanceAllowance" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>AssistantProctorAllowance</td>
+                    <td>
+                        <input ng-model="salary.AssistantProctorAllowance" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>DeanAllowance</td>
+                    <td>
+                        <input ng-model="salary.DeanAllowance" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>ChairmanAllowance</td>
+                    <td>
+                        <input ng-model="salary.ChairmanAllowance" class="form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>ProvostAllowance</td>
+                    <td><input ng-model="salary.ProvostAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>AssistantProvostAllowance</td>
+                    <td><input ng-model="salary.AssistantProvostAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>WardenDirectorAllowance</td>
+                    <td><input ng-model="salary.WardenDirectorAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>StudentAdvisorAllowance</td>
+                    <td><input ng-model="salary.StudentAdvisorAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>ResearchAllowance</td>
+                    <td><input ng-model="salary.ResearchAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>BookAllowance</td>
+                    <td><input ng-model="salary.BookAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>AdditionalDutiesAllowance</td>
+                    <td><input ng-model="salary.AdditionalDutiesAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>PresonAllowance</td>
+                    <td><input ng-model="salary.PresonAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>OthersAddition</td>
+                    <td><input ng-model="salary.OthersAddition" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Somonnoy</td>
+                    <td><input ng-model="salary.Somonnoy" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td><input ng-model="salary.Total" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>GPF</td>
+                    <td><input ng-model="salary.GPF" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>BF</td>
+                    <td><input ng-model="salary.BF" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>FutureFund</td>
+                    <td><input ng-model="salary.FutureFund" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>IncomeTax</td>
+                    <td><input ng-model="salary.IncomeTax" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>RevenueStamp</td>
+                    <td><input ng-model="salary.RevenueStamp" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>DevelopmentFund</td>
+                    <td><input ng-model="salary.DevelopmentFund" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>StudentDevelopmentFund</td>
+                    <td><input ng-model="salary.StudentDevelopmentFund" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>TeacherFamilyDevelopment</td>
+                    <td><input ng-model="salary.TeacherFamilyDevelopment" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Club</td>
+                    <td><input ng-model="salary.Club" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>HouseRentSub</td>
+                    <td><input ng-model="salary.HouseRentSub" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>GasBill</td>
+                    <td><input ng-model="salary.GasBill" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>InternetBill</td>
+                    <td><input ng-model="salary.InternetBill" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>GroupInsurance</td>
+                    <td><input ng-model="salary.GroupInsurance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>TotalSubtraction</td>
+                    <td><input ng-model="salary.TotalSubtraction" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>FestivalAllowance</td>
+                    <td><input ng-model="salary.FestivalAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>BoisakhiAllowance</td>
+                    <td><input ng-model="salary.BoisakhiAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>SrantiBinodonAllowance</td>
+                    <td><input ng-model="salary.SrantiBinodonAllowance" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>NeatSalary</td>
+                    <td><input ng-model="salary.NeatSalary" class="form-control" /></td>
                 </tr>
             </table>
         </div>

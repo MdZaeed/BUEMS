@@ -20,6 +20,7 @@ app.controller("appCtrl", ["$scope", "baseService",
         $scope.selectedMonth = month[date.getMonth()];
         $scope.selectedYear = date.getFullYear();
         $scope.thisMonthConfirmed = false;
+        $scope.isSalaryGenerated = false;
         var flag = 0;
         $scope.update = function (){
             baseService.get("/Salaries/NewIndex?month=" + $scope.selectedMonth + "&year=" + $scope.selectedYear).
@@ -45,6 +46,13 @@ app.controller("appCtrl", ["$scope", "baseService",
             
         }
 
+        baseService.get("/Salaries/IsSalaryGenerated").
+            then(function (response) {
+                if (response == true) {
+                    $scope.isSalaryGenerated = true;
+                    console.log($scope.isSalaryGenerated)
+                }
+            });
         $scope.update();
 
         $scope.print = function () {

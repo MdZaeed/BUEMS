@@ -7,13 +7,60 @@ function ($scope, baseService) {
     var index = 0;
     var length = 0;
     $scope.salary = {};
-    baseService.get("/Salaries/SalarySheetAng")
-    .then(function (response) {
-        $scope.salaries = response;
+    $scope.categories = ["শিক্ষক", "কর্মকর্তা", "কর্মচারি"];
+    $scope.selectedCategory = "শিক্ষক";
+    $scope.data=[]
+    
+    $scope.getCategoryTitles = function () {
+        $scope.showEditTable = false;
+        $scope.selectedDept = null;
+        baseService.get("/Titles/GetTitleByCategory?cat=" + $scope.selectedCategory)
+            .then(function (response) {
+                $scope.titles = response;
+            });
+    }
+    
+    $scope.selectTitle = function () {
+        $scope.showEditTable = true;
+        $scope.selectedDept = null;
+        $scope.salaries = $scope.data.filter(function (node) {
+            if (node.Title == $scope.selectedTitle) {
+                return true;
+            }
+        });
+
         length = $scope.salaries.length;
-        if(length!=0){
+        if (length != 0) {
             $scope.salary = $scope.salaries[index];
         }
+    }
+
+    $scope.selectDept = function () {
+        $scope.showEditTable = true;
+        $scope.salaries = $scope.salaries.filter(function (node) {
+            if (node.Institute == $scope.selectedDept) {
+                return true;
+            }
+        });
+
+        length = $scope.salaries.length;
+        if (length != 0) {
+            $scope.salary = $scope.salaries[index];
+        }
+        else $scope.salary = null;
+    }
+
+    $scope.getCategoryTitles();
+
+    baseService.get("/Salaries/SalarySheetAng")
+    .then(function (response) {
+        $scope.data = response;
+        $scope.salaries = $scope.data;
+    });
+
+    baseService.get("/Departments/IndexJson")
+    .then(function (response) {
+        $scope.depts = response;
     });
 
     $scope.update = function () {
@@ -21,9 +68,6 @@ function ($scope, baseService) {
             .then(function (response) {
                 alert("Updated");
             });
-    }
-    $scope.selected = function () {
-
     }
 
     $scope.next = function () {

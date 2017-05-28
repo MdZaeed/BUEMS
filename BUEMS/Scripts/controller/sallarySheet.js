@@ -8,7 +8,6 @@ function ($scope, baseService) {
     baseService.get("/Salaries/SalarySheetAng")
     .then(function (response) {
         $scope.salaries = response;
-
     });
 
     $scope.update = function () {

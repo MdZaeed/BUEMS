@@ -29,10 +29,10 @@ namespace BUEMS.Controllers
                 var preData1 = firstOrDefault1.Data;
                 if (!preData1.Equals(""))
                 {
-                    return Json(true,JsonRequestBehavior.AllowGet);
+                    return Json("true",JsonRequestBehavior.AllowGet);
                 }
             }
-            return Json(false,JsonRequestBehavior.AllowGet);
+            return Json("false",JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult AllowanceConfirm()

@@ -28,13 +28,13 @@ namespace BUEMS.Controllers
             return View();
         }
 
-        [AuthLog(Roles = "VC,Treasurer,Accoutant")]
+        //[AuthLog(Roles = "VC,Treasurer,Accoutant")]
         public ActionResult Salaries()
         {
             return View();
         }
 
-        [AuthLog(Roles = "VC,Treasurer,Accoutant")]
+        //[AuthLog(Roles = "VC,Treasurer,Accoutant")]
         public ActionResult Salary()
         {
             return View();
