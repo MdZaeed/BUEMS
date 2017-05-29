@@ -84,26 +84,293 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            
-            
-        </div>
-    </div>
-    <div class="container" style="overflow:scroll; margin-top:20px; max-height:1000px">
+    <div class="container" style="overflow:scroll; margin-top:20px;">
         <div class="row" >
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th ng-repeat="(key, value) in salaries[0]">
-                            {{key}}
+                        <th>
+                            IdNo
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Institute
+                        </th>
+                        <th>
+                            JoiningDate
+                        </th>
+                        <th>
+                            Month
+                        </th>
+                        <th>
+                            AccountNo
+                        </th>
+                        <th>
+                            Grade
+                        </th>
+                        <th>
+                            MainSalary
+                        </th>
+                        <th>
+                            PayableMainSalary
+                        </th>
+                        <th>
+                            HouseRent
+                        </th>
+                        <th>
+                            MoharghoAlloowance
+                        </th>
+                        <th>
+                            TelephoneAllowance
+                        </th>
+                        <th>
+                            CurriculumAssitanceAllowance
+                        </th>
+                        <th>
+                            AssistantProctorAllowance
+                        </th>
+                        <th>
+                            DeanAllowance
+                        </th>
+                        <th>
+                            ChairmanAllowance
+                        </th>
+                        <th>
+                            ProvostAllowance
+                        </th>
+                        <th>
+                            AssistantProvostAllowance
+                        </th>
+                        <th>
+                            WardenDirectorAllowance
+                        </th>
+                        <th>
+                            StudentAdvisorAllowance
+                        </th>
+                        <th>
+                            ResearchAllowance
+                        </th>
+                        <th>
+                            BookAllowance
+                        </th>
+                        <th>
+                            AdditionalDutiesAllowance
+                        </th>
+                        <th>
+                            PresonAllowance
+                        </th>
+                        <th>
+                            OthersAddition
+                        </th>
+                        <th>
+                            Somonnoy
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            GPF
+                        </th>
+                        <th>
+                            BF
+                        </th>
+                        <th>
+                            FutureFund
+                        </th>
+                        <th>
+                            TransportationAllowance
+                        </th>
+                        <th>
+                            IncomeTax
+                        </th>
+                        <th>
+                            RevenueStamp
+                        </th>
+                        <th>
+                            DevelopmentFund
+                        </th>
+                        <th>
+                            StudentDevelopmentFund
+                        </th>
+                        <th>
+                            TeacherFamilyDevelopment
+                        </th>
+                        <th>
+                            Club
+                        </th>
+                        <th>
+                            HouseRentSub
+                        </th>
+                        <th>
+                            GasBill
+                        </th>
+                        <th>
+                            InternetBill
+                        </th>
+                        <th>
+                            TotalSubtraction
+                        </th>
+                        <th>
+                            FestivalAllowance
+                        </th>
+                        <th>
+                            BoisakhiAllowance
+                        </th>
+                        <th>
+                            SrantiBinodonAllowance
+                        </th>
+                        <th>
+                            NeatSalary
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="margin-top:30px">
                     <tr ng-repeat="salary in salaries | filter: search | filter: {Institute: selectedDepartment} : true | filter:{Title: selectedTitle} :true">
-                        <td ng-repeat="(key, value) in salary">
-                            <input ng-model="salary[key]">
+                        <td>
+                            {{salary.IdNo}}
+                        </td>
+                        <td>
+                            {{salary.Name}}
+                        </td>
+                        <td>
+                            {{salary.Title}}
+                        </td>
+                        <td>
+                            {{salary.Institute}}
+                        </td>
+                        <td>
+                            {{salary.JoiningDate}}
+                        </td>
+                        <td>
+                            {{salary.Month}}
+                        </td>
+                        <td>
+                            {{salary.AccountNo}}
+                        </td>
+                        <td>
+                            {{salary.Grade}}
+                        </td>
+                        <td>
+                            {{salary.MainSalary}}
+                        </td>
+                        <td>
+                            <input ng-model="salary.PayableMainSalary">
+                        </td>
+                        <td>
+                            <input ng-model="salary.HouseRent">
+                        </td>
+                        <td>
+                            <input ng-model="salary.MoharghoAlloowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.MedicalAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.TelephoneAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.CurriculumAssitanceAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.AssistantProctorAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.DeanAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.ChairmanAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.ProvostAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.AssistantProvostAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.WardenDirectorAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.StudentAdvisorAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.ResearchAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.BookAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.AdditionalDutiesAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.PresonAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.OthersAddition">
+                        </td>
+                        <td>
+                            <input ng-model="salary.Somonnoy">
+                        </td>
+                        <td>
+                            <input ng-model="salary.Total">
+                        </td>
+                        <td>
+                            <input ng-model="salary.GPF">
+                        </td>
+                        <td>
+                            <input ng-model="salary.BF">
+                        </td>
+                        <td>
+                            <input ng-model="salary.FutureFund">
+                        </td>
+                        <td>
+                            <input ng-model="salary.IncomeTax">
+                        </td>
+                        <td>
+                            <input ng-model="salary.RevenueStamp">
+                        </td>
+                        <td>
+                            <input ng-model="salary.DevelopmentFund">
+                        </td>
+                        <td>
+                            <input ng-model="salary.StudentDevelopmentFund">
+                        </td>
+                        <td>
+                            <input ng-model="salary.TeacherFamilyDevelopment">
+                        </td>
+                        <td>
+                            <input ng-model="salary.Club">
+                        </td>
+                        <td>
+                            <input ng-model="salary.HouseRentSub">
+                        </td>
+                        <td>
+                            <input ng-model="salary.GasBill">
+                        </td>
+                        <td>
+                            <input ng-model="salary.InternetBill">
+                        </td>
+                        <td>
+                            <input ng-model="salary.GroupInsurance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.TotalSubtraction">
+                        </td>
+                        <td>
+                            <input ng-model="salary.FestivalAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.BoisakhiAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.SrantiBinodonAllowance">
+                        </td>
+                        <td>
+                            <input ng-model="salary.NeatSalary">
                         </td>
                     </tr>
                 </tbody>
@@ -115,7 +382,6 @@
     <script src="~/Scripts/controller/sallarySheet.js"></script>
     <script src="~/Scripts/service/baseService.js"></script>
 </div>
-
 
 
 
