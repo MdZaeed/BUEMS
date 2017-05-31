@@ -62,7 +62,7 @@ namespace BUEMS.Controllers
         }
 
         // GET: Employees/Create
-        [AuthLog(Roles = "Accountant")]
+        [AuthLog(Roles = "Acountant")]
         public ActionResult Create()
         {
             var grades = db.Grades.ToList();
