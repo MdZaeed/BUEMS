@@ -30,7 +30,7 @@ namespace BUEMS.Controllers
             {
                 all = allowance.AllowanceAmount;
             }
-            return all;
+            return LanguageConverter.BanglaToEnglish(all);
         }
         public static string CalculateHouseRent(int mainSalary)
         {
@@ -40,7 +40,7 @@ namespace BUEMS.Controllers
                 tax = (int)(mainSalary * .55);
                 if (tax < 5000)
                 {
-                    return "৫০০০";
+                    return "5000";
                 }
             }
             else if (mainSalary <= 16000)
@@ -48,7 +48,7 @@ namespace BUEMS.Controllers
                 tax = (int)(mainSalary * .5);
                 if (tax < 5400)
                 {
-                    return "৫৪০০";
+                    return "5400";
                 }
             }
             else if (mainSalary <= 35500)
@@ -56,7 +56,7 @@ namespace BUEMS.Controllers
                 tax = (int)(mainSalary * .45);
                 if (tax < 8000)
                 {
-                    return "৮০০০";
+                    return "8000";
                 }
             }
             else
@@ -64,10 +64,10 @@ namespace BUEMS.Controllers
                 tax = (int)(mainSalary * .4);
                 if (tax < 16000)
                 {
-                    return "১৬০০০";
+                    return "16000";
                 }
             }
-            return LanguageConverter.EnglishToBangla(tax + "");
+            return tax + "";
         }
 
         public static string GetMedicalBill()
@@ -86,7 +86,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("সহকারী প্রক্টর");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetDeanAllowance(Boolean answer)
@@ -95,7 +95,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("ডিন");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetChairmanAllowance(Boolean answer)
@@ -104,7 +104,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("চেয়ারম্যান");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetProvostAllowance(Boolean answer)
@@ -113,7 +113,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("প্রোভোস্ট");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetAdditionalDutiesAllowance(Boolean answer)
@@ -122,7 +122,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("অতিরিক্ত দায়িত্ব");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetStudentAdvisorAllowance(Boolean answer)
@@ -131,7 +131,7 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("শিক্ষার্থী উপদেষ্টা");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetResearchAllowance()
@@ -147,20 +147,20 @@ namespace BUEMS.Controllers
 
         public static string GetGpf(int mainSalary)
         {
-            return LanguageConverter.EnglishToBangla(((int)(mainSalary * .1)) +  "" );
+            return ((int)(mainSalary * .1)) +  "" ;
         }
          
         public static string GetBf(int mainSalary, string category)
         {
             if (category.Equals("শিক্ষক"))
             {
-                return LanguageConverter.EnglishToBangla((int)(mainSalary * .1) + "");
+                return (int)(mainSalary * .1) + "";
             }
-            if (category.Equals("??????") || category.Equals("?????????") || category.Equals("?? ??????"))
+            if (category.Equals("কর্মকর্তা") || category.Equals("কর্মচারি") || category.Equals("?? ??????"))
             {
-                return LanguageConverter.EnglishToBangla((int)(mainSalary * .25) + "");
+                return (int)(mainSalary * .25) + "";
             }
-            return LanguageConverter.EnglishToBangla((int)(mainSalary * .125) + "");
+            return (int)(mainSalary * .125) + "";
         }
 
         public static string GetTransportationAllowance(Boolean answer)
@@ -169,12 +169,12 @@ namespace BUEMS.Controllers
             {
                 return GetAllowanceFromDb("পরিবহন");
             }
-            return "০";
+            return "0";
         }
 
         public static string GetTax(int scale, int grade, string sex, Boolean isFreedomFighter)
         {
-            return "০";
+            return "0";
         }
 
         public static string GetRevenueStampCost()
@@ -203,11 +203,11 @@ namespace BUEMS.Controllers
             
             if (AllownceCheck.FestivalBonus)
             {
-                return LanguageConverter.EnglishToBangla(mainSalary + "");
+                return mainSalary + "";
             }
             else
             {
-                return "০";
+                return "0";
             }
         }
 
@@ -216,17 +216,17 @@ namespace BUEMS.Controllers
 
             if (AllownceCheck.BoisakhiBonus)
             {
-                return LanguageConverter.EnglishToBangla((int)(mainSalary * .25) + "");
+                return (int)(mainSalary * .25) + "";
             }
             else
             {
-                return "০";
+                return "0";
             }
         }
 
         public static string GetSrantiAllowance()
         {
-            return "০";
+            return "0";
         }
 
         public static string GetGasBill()
@@ -272,37 +272,37 @@ namespace BUEMS.Controllers
         public static string GetGrandTotal(Salary salary)
         {
             int grandTotal = (salary.PayableMainSalary)
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.HouseRent))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.MedicalAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.CurriculumAssitanceAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.AssistantProctorAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.DeanAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.AdditionalDutiesAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.ResearchAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.TelephoneAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.Somonnoy))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.FestivalAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.BoisakhiAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.SrantiBinodonAllowance));
+                + Int32.Parse(salary.HouseRent)
+                + Int32.Parse((salary.MedicalAllowance))
+                + Int32.Parse(salary.CurriculumAssitanceAllowance)
+                + Int32.Parse(salary.AssistantProctorAllowance)
+                + Int32.Parse((salary.DeanAllowance))
+                + Int32.Parse((salary.AdditionalDutiesAllowance))
+                + Int32.Parse((salary.ResearchAllowance))
+                + Int32.Parse((salary.TelephoneAllowance))
+                + Int32.Parse((salary.Somonnoy))
+                + Int32.Parse((salary.FestivalAllowance))
+                + Int32.Parse((salary.BoisakhiAllowance))
+                + Int32.Parse((salary.SrantiBinodonAllowance));
             
-            return LanguageConverter.EnglishToBangla(grandTotal + "");
+            return (grandTotal + "");
         }
 
         public static string GetTotalSubtraction(Salary salary)
         {
-            int subbed = Int32.Parse(LanguageConverter.BanglaToEnglish(salary.GPF))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.BF))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.TransportationAllowance))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.IncomeTax))
-                + Int32.Parse(LanguageConverter.BanglaToEnglish(salary.RevenueStamp));
-            return LanguageConverter.EnglishToBangla(subbed + "");
+            int subbed = Int32.Parse((salary.GPF))
+                + Int32.Parse((salary.BF))
+                + Int32.Parse((salary.TransportationAllowance))
+                + Int32.Parse((salary.IncomeTax))
+                + Int32.Parse((salary.RevenueStamp));
+            return (subbed + "");
         }
 
         public static string GetNeatTotalSalary(Salary salary)
         {
-            int neat = Int32.Parse(LanguageConverter.BanglaToEnglish(salary.Total))
-                - Int32.Parse(LanguageConverter.BanglaToEnglish(salary.TotalSubtraction));
-            return LanguageConverter.EnglishToBangla(neat + "");
+            int neat = Int32.Parse((salary.Total))
+                - Int32.Parse((salary.TotalSubtraction));
+            return (neat + "");
         }
     }
 }

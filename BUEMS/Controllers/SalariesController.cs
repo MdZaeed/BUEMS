@@ -369,7 +369,7 @@ namespace BUEMS.Controllers
                 PayableMainSalary = employee.Salary,
                 ResearchAllowance = SalaryGenrationHelper.GetResearchAllowance(),
                 RevenueStamp = SalaryGenrationHelper.GetRevenueStampCost(),
-                Somonnoy = "০",
+                Somonnoy = "0",
                 TelephoneAllowance = SalaryGenrationHelper.GetTelephoneAllowance(),
                 Title = employee.Podobi,
                 TransportationAllowance = SalaryGenrationHelper.GetTransportationAllowance(employee.HasOwnTransportationMethod),
