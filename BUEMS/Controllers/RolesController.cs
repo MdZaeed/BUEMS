@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BUEMS.CustomFilters;
 using BUEMS.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -17,6 +18,7 @@ namespace BUEMS.Controllers
             _dbContext=new ApplicationDbContext();
         }
         // GET: Roles
+        [AuthLog(Roles = "Teacher")]
         public ActionResult Index()
         {
             return View(_dbContext.Roles.ToList());

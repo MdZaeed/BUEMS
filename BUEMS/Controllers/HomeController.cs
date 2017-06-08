@@ -14,6 +14,10 @@ namespace BUEMS.Controllers
 
         public ActionResult Index()
         {
+            if(User.IsInRole("Teacher"))
+            {
+                return RedirectToAction("GetSalaryByUser","Salaries");
+            }
             return View();
         }
 

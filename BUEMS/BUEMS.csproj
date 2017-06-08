@@ -175,6 +175,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\GradesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailSending.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SalariesController.cs" />
@@ -254,6 +255,10 @@
     <Compile Include="Migrations\201705271707519_Sranti and Boisakhi.Designer.cs">
       <DependentUpon>201705271707519_Sranti and Boisakhi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706071521154_Email Added.cs" />
+    <Compile Include="Migrations\201706071521154_Email Added.Designer.cs">
+      <DependentUpon>201706071521154_Email Added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allowance.cs" />
@@ -266,6 +271,7 @@
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LanguageConverter.cs" />
+    <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Salary.cs" />
     <Compile Include="Models\SalaryHis.cs" />
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705271707519_Sranti and Boisakhi.resx">
       <DependentUpon>201705271707519_Sranti and Boisakhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706071521154_Email Added.resx">
+      <DependentUpon>201706071521154_Email Added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
