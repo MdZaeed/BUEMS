@@ -31,7 +31,10 @@ function ($scope, baseService) {
 
         length = $scope.salaries.length;
         if (length != 0) {
-            $scope.salary = $scope.salaries[index];
+            $scope.salary = $scope.salaries[0];
+        }
+        else {
+            $scope.showEditTable = false;
         }
     }
 
@@ -45,9 +48,11 @@ function ($scope, baseService) {
 
         length = $scope.salaries.length;
         if (length != 0) {
-            $scope.salary = $scope.salaries[index];
+            $scope.salary = $scope.salaries[0];
         }
-        else $scope.salary = null;
+        else {
+            $scope.showEditTable = false;
+        }
     }
 
     $scope.getCategoryTitles();
