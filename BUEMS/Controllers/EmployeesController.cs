@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using BUEMS.Models;
 using BUEMS.CustomFilters;
 
@@ -86,7 +87,7 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Create([Bind(Include = "SerialNo,IdNo,FullName,EnglishFullName,Email,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -107,6 +108,16 @@ namespace BUEMS.Controllers
                 }
                 db.Employees.Add(employee);
                 db.SaveChanges();
+                var v = new RegisterViewModel
+                {
+                    FullName = employee.EnglishFullName,
+                    Name = "Teacher",
+                    Email = employee.Email,
+                    Password = "Iit@12345",
+                    ConfirmPassword = "Iit@12345"
+                };
+                var controller=new AccountController();
+                controller.RegisterMid(v);
                 return RedirectToAction("Index");
             }
 
@@ -146,7 +157,7 @@ namespace BUEMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SerialNo,IdNo,FullName,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
+        public ActionResult Edit([Bind(Include = "SerialNo,IdNo,FullName,EnglishFullName,Email,Podobi,Salary,Category,Department,JoiningDate,AccountNo,MainSalaryGrade,IncrementNo,Sex,IsFreedomFighter,IsAddiitonalDuties,IsStudentAdviser,IsDean,IsChairman,IsProvost,IsProctor,IsAssistantProctor,HasOwnTransportationMethod,IsTeacher")] Employee employee)
         {
             if (ModelState.IsValid)
             {

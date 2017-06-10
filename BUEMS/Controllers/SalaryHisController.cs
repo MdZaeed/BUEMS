@@ -17,6 +17,14 @@ namespace BUEMS.Controllers
         // GET: SalaryHis
         public ActionResult Index()
         {
+            MailModel mail=new MailModel
+            {
+                Body = "hjaw",
+                From = "tz2201@gmail.com",
+                Subject = "maw",
+                To = "bsse0504@iit.du.ac.bd"
+            };
+            MailSending.SendMail(mail);
             return View(db.SalaryHises.ToList());
         }
 

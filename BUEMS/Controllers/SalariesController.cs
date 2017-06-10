@@ -51,6 +51,21 @@ namespace BUEMS.Controllers
             return View(allownceCheck);
         }
 
+        public ActionResult GetSalaryByUser()
+        {
+            var fullName = User.Identity.Name;
+            Employee emp = db.Employees.Where(i => i.EnglishFullName.Equals(fullName)).ToList().FirstOrDefault();
+            var results = db.Salaries.Where(i => i.IdNo.Equals(emp.IdNo)).ToList();
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSalaryByName(string id)
+        {
+            Employee emp = db.Employees.Where(i => i.IdNo.Equals(id)).ToList().FirstOrDefault();
+            var results = db.Salaries.Where(i => i.IdNo.Equals(emp.IdNo)).ToList();
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Salaries
         public ActionResult Index()
         {

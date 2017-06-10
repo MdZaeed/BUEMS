@@ -15,6 +15,10 @@ namespace BUEMS.Models
         public string IdNo { get; set; }
         [Display(Name = "পুর্ণ নাম")]
         public string FullName { get; set; }
+        [Display(Name = "পুর্ণ নাম(ইংরেজী)")]
+        public string EnglishFullName { get; set; }
+        [Display(Name = "ই-মেইল")]
+        public string Email { get; set; }
         [Display(Name = "পদবি")]
         public string Podobi { get; set; }
         [Display(Name = "বেতন")]
