@@ -31,7 +31,7 @@ namespace BUEMS.Controllers
         //[AuthLog(Roles = "VC,Treasurer,Accoutant")]
         public ActionResult Salaries()
         {
-            MailSending.SendMailWithAttachment(new MailModel());
+            MailSending.SendMailWithAttachment("");
             return View();
         }
 
